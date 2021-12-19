@@ -663,6 +663,15 @@ class PlayState extends MusicBeatState
 					bg.antialiasing = false;
 					add(bg);
 				}
+			case 'maze': //Zardy week 1
+
+				var bg:BGSprite = new BGSprite('Maze', -600, -200, 0.9, 0.9, ['Stage'], true);
+				add(bg);
+			case 'deepmaze': //Zardy week 2
+
+			var bg:BGSprite = new BGSprite('Zardy2BG', -600, -200, 0.9, 0.9, ['BG'], true);
+			add(bg);
+		
 		}
 
 		if(isPixelStage) {
@@ -815,6 +824,8 @@ class PlayState extends MusicBeatState
 			case 'schoolEvil':
 				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
 				insert(members.indexOf(dadGroup) - 1, evilTrail);
+			case 'deepmaze':
+				gf.alpha = 0;
 		}
 
 		var file:String = Paths.json(songName + '/dialogue'); //Checks for json/Psych Engine dialogue

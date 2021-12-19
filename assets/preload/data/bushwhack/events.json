@@ -1,0 +1,37 @@
+{
+	"song": {
+		"song": "Bushwhack",
+		"notes": [],
+		"events": [
+			[
+				151632.1243523314,
+				[
+					[
+						"Change Character",
+						"Dad",
+						"Dad"
+					]
+				]
+			],
+			[
+				154119.17098445573,
+				[
+					[
+						"Change Scroll Speed",
+						"1.3",
+						"0"
+					]
+				]
+			]
+		],
+		"bpm": 193,
+		"needsVoices": true,
+		"speed": 2.8,
+		"player1": "bf",
+		"player2": "zardyButDARK",
+		"player3": null,
+		"gfVersion": "gf",
+		"stage": "stage",
+		"validScore": false
+	}
+}

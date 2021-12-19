@@ -1,0 +1,9 @@
+{
+	"directory": "weekz",
+	"defaultZoom": 0.9,
+	"isPixelStage": false,
+
+	"boyfriend": [850, 240],
+	"girlfriend": [400, 270],
+	"opponent": [70, 240]
+}

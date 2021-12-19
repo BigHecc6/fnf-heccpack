@@ -1,0 +1,21 @@
+{
+	"songs": [
+		["Foolhardy", "senpai-pixel", [255, 120, 191]],
+		["Bushwhack", "senpai-pixel", [255, 120, 191]]
+	],
+
+	"weekCharacters": [
+		"senpai",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "school",
+
+	"storyName": "hating simulator ft. moawling",
+	"weekBefore": "week6",
+	"weekName": "Week Corn",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}
