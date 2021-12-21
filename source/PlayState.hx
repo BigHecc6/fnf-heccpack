@@ -121,6 +121,7 @@ class PlayState extends MusicBeatState
 	public var dad:Character;
 	public var gf:Character;
 	public var boyfriend:Boyfriend;
+	public static var daPlayer:String;
 
 	public var notes:FlxTypedGroup<Note>;
 	public var unspawnNotes:Array<Note> = [];
@@ -194,6 +195,7 @@ class PlayState extends MusicBeatState
 	var phillyCityLightsEvent:FlxTypedGroup<BGSprite>;
 	var phillyCityLightsEventTween:FlxTween;
 	var trainSound:FlxSound;
+	var foregrounds:FlxTypedGroup<BGSprite>;
 
 	var limoKillingState:Int = 0;
 	var limo:BGSprite;
@@ -390,6 +392,7 @@ class PlayState extends MusicBeatState
 		dadGroup = new FlxSpriteGroup(DAD_X, DAD_Y);
 		gfGroup = new FlxSpriteGroup(GF_X, GF_Y);
 
+		foregrounds = new FlxTypedGroup<BGSprite>();
 		switch (curStage)
 		{
 			case 'stage': //Week 1
@@ -663,14 +666,59 @@ class PlayState extends MusicBeatState
 					bg.antialiasing = false;
 					add(bg);
 				}
+			case 'tank': //week 7
+				var tankSky:BGSprite = new BGSprite('tankSky', -400, -400, 0, 0);
+				var tankBuildings:BGSprite = new BGSprite('tankBuildings', -200, 0, 0.3, 0.3);
+				tankBuildings.setGraphicSize(Std.int(tankBuildings.width * 1.1), Std.int(tankBuildings.height * 1.1));
+				tankBuildings.updateHitbox();
+				var tankRuins:BGSprite = new BGSprite('tankRuins', -200, 0, 0.35, 0.35);
+				tankRuins.setGraphicSize(Std.int(tankRuins.width * 1.1), Std.int(tankRuins.height * 1.1));
+				tankRuins.updateHitbox();
+				var tankWatchtower:BGSprite = new BGSprite('tankWatchtower', 100, 50, 0.5, 0.5, ['watchtower'], true);
+				var tankGround:BGSprite = new BGSprite('tankGround', -420, -150, 0.9, 0.9);
+				tankGround.setGraphicSize(Std.int(tankGround.width * 1.15), Std.int(tankGround.height * 1.15));
+				tankGround.updateHitbox();
+				var tankClouds:BGSprite = new BGSprite('tankClouds', -400, 0, 0.1, 0.1);
+				var tankMountains:BGSprite = new BGSprite('tankMountains', -300, -20, 0.2, 0.2);
+				tankMountains.setGraphicSize(Std.int(tankMountains.width*1.2), Std.int(tankMountains.height*1.2));
+				tankMountains.updateHitbox();
+				var tankRolling:BGSprite = new BGSprite('tankRolling', 300, 300, 0.5, 0.5, ['BG tank w lighting'], true);
+				var smokeLeft:BGSprite = new BGSprite('smokeLeft', -200, -100, 0.4, 0.4, ['SmokeBlurLeft'], true);
+				var smokeRight:BGSprite = new BGSprite('smokeRight', 1100, -100, 0.4, 0.4, ['SmokeRight'], true);
+
+
+				add(tankSky);
+				add(tankClouds);
+				add(tankMountains);
+				add(tankBuildings);
+				add(tankRuins);
+				add(smokeLeft);
+				add(smokeRight);
+				add(tankWatchtower);
+				add(tankRolling);
+				add(tankGround);
 			case 'maze': //Zardy week 1
 
 				var bg:BGSprite = new BGSprite('Maze', -600, -200, 0.9, 0.9, ['Stage'], true);
 				add(bg);
 			case 'deepmaze': //Zardy week 2
 
-			var bg:BGSprite = new BGSprite('Zardy2BG', -600, -200, 0.9, 0.9, ['BG'], true);
-			add(bg);
+				var bg:BGSprite = new BGSprite('Zardy2BG', -600, -200, 0.9, 0.9, ['BG'], true);
+				add(bg);
+			case 'alley':
+				var bg:BGSprite = new BGSprite('whittyBack', -500, -300, 0.9, 0.9);
+				add(bg);
+				var stageFront:BGSprite = new BGSprite('whittyFront', -650, 600, 0.9, 0.9);
+				add(stageFront);
+			case 'ballisticAlley': {
+				var bg:BGSprite = new BGSprite('BallisticBackground', -600, -200, 0.9, 0.9, ['Background Whitty Moving'], true);
+				add(bg);
+				var oohcool:BGSprite = new BGSprite('thefunnyeffect', -600, -200);
+				oohcool.alpha = 0.5;
+				foregrounds.add(oohcool);
+				oohcool.cameras = [camHUD];
+			}
+
 		
 		}
 
@@ -800,8 +848,10 @@ class PlayState extends MusicBeatState
 		startCharacterPos(dad, true);
 		dadGroup.add(dad);
 		startCharacterLua(dad.curCharacter);
-		
-		boyfriend = new Boyfriend(0, 0, SONG.player1);
+		if (daPlayer == "bf")
+			boyfriend = new Boyfriend(0, 0, SONG.player1);
+		else if (daPlayer != "bf")
+			boyfriend = new Boyfriend(0, 0, daPlayer);
 		startCharacterPos(boyfriend);
 		boyfriendGroup.add(boyfriend);
 		startCharacterLua(boyfriend.curCharacter);
@@ -891,7 +941,7 @@ class PlayState extends MusicBeatState
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
 		add(grpNoteSplashes);
-
+		add(foregrounds);
 		if(ClientPrefs.timeBarType == 'Song Name')
 		{
 			timeTxt.size = 24;
@@ -908,6 +958,7 @@ class PlayState extends MusicBeatState
 		// startCountdown();
 
 		generateSong(SONG.song);
+		
 		#if LUA_ALLOWED
 		for (notetype in noteTypeMap.keys())
 		{
@@ -1135,7 +1186,8 @@ class PlayState extends MusicBeatState
 				case 'senpai' | 'roses' | 'thorns':
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
-
+				case 'ugh' | 'guns' | 'stress':
+					startVideo(daSong + 'Cutscene');
 				default:
 					startCountdown();
 			}

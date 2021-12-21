@@ -8,8 +8,8 @@
 				[
 					[
 						"Change Character",
-						"Dad",
-						"Dad"
+						"1",
+						"cablecrow"
 					]
 				]
 			],
@@ -31,7 +31,7 @@
 		"player2": "zardyButDARK",
 		"player3": null,
 		"gfVersion": "gf",
-		"stage": "stage",
+		"stage": "deepmaze",
 		"validScore": false
 	}
 }

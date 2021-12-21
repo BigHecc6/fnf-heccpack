@@ -1,0 +1,24 @@
+{
+	"songs": [
+		["Lo-Fight", "whitty", [90, 79, 59]],
+		["Overhead", "whitty", [90, 79, 59]],
+		["Ballistic", "whittycrazy", [105, 50, 74]]
+	],
+
+	"weekCharacters": [
+		"whitty",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "alley",
+
+	"storyName": "Back Alley Blitz",
+	"weekBefore": "weekz",
+	"weekName": "Bomb Guy",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false,
+	"weekMod": "wit",
+	"difficulties": ""
+}

@@ -1,0 +1,10 @@
+{
+	"idle_anim": "zardyy",
+	"image": "Menu_Zardy",
+	"position": [
+		130,
+		192
+	],
+	"scale": 0.45,
+	"confirm_anim": "M Dad Idle"
+}

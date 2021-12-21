@@ -1,21 +1,23 @@
 {
 	"songs": [
-		["Foolhardy", "senpai-pixel", [255, 120, 191]],
-		["Bushwhack", "senpai-pixel", [255, 120, 191]]
+		["Foolhardy", "zardy", [0, 135, 0]],
+		["Bushwhack", "zardydark", [0, 135, 0]]
 	],
 
 	"weekCharacters": [
-		"senpai",
+		"zardy",
 		"bf",
 		"gf"
 	],
-	"weekBackground": "school",
+	"weekBackground": "maze",
 
-	"storyName": "hating simulator ft. moawling",
-	"weekBefore": "week6",
+	"storyName": "Zardy's Maze",
+	"weekBefore": "week7",
 	"weekName": "Week Corn",
 	"startUnlocked": true,
 
 	"hideStoryMode": false,
-	"hideFreeplay": false
+	"hideFreeplay": false,
+	"weekMod": "zar",
+	"difficulties": "Normal"
 }

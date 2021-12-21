@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Menu_Zardy.png">
+	<!-- Created with Adobe Animate version 21.0.2.37893 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="zardyy0000" x="0" y="0" width="446" height="753" frameX="-2" frameY="-3" frameWidth="448" frameHeight="757"/>
+	<SubTexture name="zardyy0001" x="0" y="0" width="446" height="753" frameX="-2" frameY="-3" frameWidth="448" frameHeight="757"/>
+	<SubTexture name="zardyy0002" x="463" y="0" width="429" height="752" frameX="-11" frameY="-4" frameWidth="448" frameHeight="757"/>
+	<SubTexture name="zardyy0003" x="463" y="0" width="429" height="752" frameX="-11" frameY="-4" frameWidth="448" frameHeight="757"/>
+	<SubTexture name="zardyy0004" x="909" y="0" width="434" height="756" frameX="0" frameY="-1" frameWidth="448" frameHeight="757"/>
+	<SubTexture name="zardyy0005" x="909" y="0" width="434" height="756" frameX="0" frameY="-1" frameWidth="448" frameHeight="757"/>
+	<SubTexture name="zardyy0006" x="1360" y="0" width="430" height="757" frameX="-4" frameY="0" frameWidth="448" frameHeight="757"/>
+	<SubTexture name="zardyy0007" x="1360" y="0" width="430" height="757" frameX="-4" frameY="0" frameWidth="448" frameHeight="757"/>
+	<SubTexture name="zardyy0008" x="1360" y="0" width="430" height="757" frameX="-4" frameY="0" frameWidth="448" frameHeight="757"/>
+	<SubTexture name="zardyy0009" x="1360" y="0" width="430" height="757" frameX="-4" frameY="0" frameWidth="448" frameHeight="757"/>
+	<SubTexture name="zardyy0010" x="1360" y="0" width="430" height="757" frameX="-4" frameY="0" frameWidth="448" frameHeight="757"/>
+	<SubTexture name="zardyy0011" x="1360" y="0" width="430" height="757" frameX="-4" frameY="0" frameWidth="448" frameHeight="757"/>
+	<SubTexture name="zardyy0012" x="1360" y="0" width="430" height="757" frameX="-4" frameY="0" frameWidth="448" frameHeight="757"/>
+	<SubTexture name="zardyy0013" x="1360" y="0" width="430" height="757" frameX="-4" frameY="0" frameWidth="448" frameHeight="757"/>
+</TextureAtlas>

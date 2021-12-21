@@ -11,7 +11,8 @@ import Section.SwagSection;
 import sys.io.File;
 import sys.FileSystem;
 #end
-import openfl.utils.Assets;
+import lime.utils.Assets;
+import openfl.utils.Assets as OpenFlAssets;
 import haxe.Json;
 import haxe.format.JsonParser;
 
@@ -41,10 +42,22 @@ typedef AnimArray = {
 	var offsets:Array<Int>;
 }
 
+typedef BfSelect = {
+	var chars:Array<Dynamic>;
+}
+
 class Character extends FlxSprite
 {
 	public var animOffsets:Map<String, Array<Dynamic>>;
 	public var debugMode:Bool = false;
+
+	private static var rawJson:String = null;
+	private static var defBF:BfSelect = {
+		"chars": [
+			['bf', 'BF', 'BOYFRIEND']
+		]
+    };
+
 
 	public var isPlayer:Bool = false;
 	public var curCharacter:String = DEFAULT_CHARACTER;
@@ -66,6 +79,9 @@ class Character extends FlxSprite
 	public var cameraPosition:Array<Float> = [0, 0];
 
 	public var hasMissAnimations:Bool = false;
+
+	public static var curBF:Int = 0;
+
 
 	//Used on Character Editor
 	public var imageFile:String = '';
@@ -324,4 +340,16 @@ class Character extends FlxSprite
 	{
 		animation.addByPrefix(name, anim, 24, false);
 	}
+	public static function getBFs(path:String):BfSelect {
+	
+		if(OpenFlAssets.exists(Paths.getPreloadPath(path))) {
+			rawJson = Assets.getText(Paths.getPreloadPath(path));
+		}
+		if (rawJson != null && rawJson.length > 0) {
+			return cast Json.parse(rawJson);
+		}
+		return defBF;
+	}
 }
+
+

@@ -6,5 +6,8 @@ mall
 mallEvil
 school
 schoolEvil
+tank
+alley
+alleyBallistic
 maze
 deepmaze

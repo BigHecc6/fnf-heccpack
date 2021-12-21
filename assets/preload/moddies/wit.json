@@ -1,0 +1,8 @@
+{
+    "id": "wit",
+    "name": "VS Whitty",
+    "weeks": [
+        "weekwit"
+    ],
+    "modBefore": "og"
+}

@@ -12476,9 +12476,19 @@
 				"sectionNotes": [],
 				"typeOfSection": 0,
 				"altAnim": false
+			},
+			{
+				"lengthInSteps": 16,
+				"bpm": 200,
+				"changeBPM": false,
+				"mustHitSection": true,
+				"gfSection": false,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"altAnim": false
 			}
 		],
-		"player2": "zardyMyBeloved",
+		"player2": "zardy",
 		"song": "Foolhardy",
 		"stage": "maze",
 		"validScore": true,

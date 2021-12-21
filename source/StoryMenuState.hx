@@ -33,10 +33,12 @@ class StoryMenuState extends MusicBeatState
 
 	private static var lastDifficultyName:String = '';
 	var curDifficulty:Int = 1;
-
+	var modCats:Array<String> = CoolUtil.coolTextFile(Paths.getPreloadPath('moddies/mods.txt'));
 	var txtWeekTitle:FlxText;
 	var bgSprite:FlxSprite;
 
+	private static var modNum:Int = FreeplayState.modNum;
+	
 	private static var curWeek:Int = 0;
 
 	var txtTracklist:FlxText;
@@ -45,11 +47,12 @@ class StoryMenuState extends MusicBeatState
 	var grpWeekCharacters:FlxTypedGroup<MenuCharacter>;
 
 	var grpLocks:FlxTypedGroup<FlxSprite>;
-
+	var modLogo:FlxSprite;
 	var difficultySelectors:FlxGroup;
 	var sprDifficulty:FlxSprite;
 	var leftArrow:FlxSprite;
 	var rightArrow:FlxSprite;
+	
 
 	override function create()
 	{
@@ -59,7 +62,7 @@ class StoryMenuState extends MusicBeatState
 
 		PlayState.isStoryMode = true;
 		WeekData.reloadWeekFiles(true);
-		if(curWeek >= WeekData.weeksList.length) curWeek = 0;
+		
 		persistentUpdate = persistentDraw = true;
 
 		scoreText = new FlxText(10, 10, 0, "SCORE: 49324858", 36);
@@ -75,7 +78,9 @@ class StoryMenuState extends MusicBeatState
 		rankText.size = scoreText.size;
 		rankText.screenCenter(X);
 
-		var ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
+		
+
+		
 		var bgYellow:FlxSprite = new FlxSprite(0, 56).makeGraphic(FlxG.width, 386, 0xFFF9CF51);
 		bgSprite = new FlxSprite(0, 56);
 		bgSprite.antialiasing = ClientPrefs.globalAntialiasing;
@@ -96,31 +101,9 @@ class StoryMenuState extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 
-		for (i in 0...WeekData.weeksList.length)
-		{
-			WeekData.setDirectoryFromWeek(WeekData.weeksLoaded.get(WeekData.weeksList[i]));
-			var weekThing:MenuItem = new MenuItem(0, bgSprite.y + 396, WeekData.weeksList[i]);
-			weekThing.y += ((weekThing.height + 20) * i);
-			weekThing.targetY = i;
-			grpWeekText.add(weekThing);
+		reloadWeeks();
 
-			weekThing.screenCenter(X);
-			weekThing.antialiasing = ClientPrefs.globalAntialiasing;
-			// weekThing.updateHitbox();
-
-			// Needs an offset thingie
-			if (weekIsLocked(i))
-			{
-				var lock:FlxSprite = new FlxSprite(weekThing.width + 10 + weekThing.x);
-				lock.frames = ui_tex;
-				lock.animation.addByPrefix('lock', 'lock');
-				lock.animation.play('lock');
-				lock.ID = i;
-				lock.antialiasing = ClientPrefs.globalAntialiasing;
-				grpLocks.add(lock);
-			}
-		}
-
+		var ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
 		WeekData.setDirectoryFromWeek(WeekData.weeksLoaded.get(WeekData.weeksList[0]));
 		var charArray:Array<String> = WeekData.weeksLoaded.get(WeekData.weeksList[0]).weekCharacters;
 		for (char in 0...3)
@@ -206,6 +189,7 @@ class StoryMenuState extends MusicBeatState
 		{
 			var upP = controls.UI_UP_P;
 			var downP = controls.UI_DOWN_P;
+
 			if (upP)
 			{
 				changeWeek(-1);
@@ -249,6 +233,12 @@ class StoryMenuState extends MusicBeatState
 			else if (controls.ACCEPT)
 			{
 				selectWeek();
+			}
+			if (FlxG.keys.justPressed.LBRACKET) {
+				changeMod(-1);
+			}
+			else if (FlxG.keys.justPressed.RBRACKET) {
+				changeMod(1);
 			}
 		}
 
@@ -464,5 +454,56 @@ class StoryMenuState extends MusicBeatState
 		#if !switch
 		intendedScore = Highscore.getWeekScore(WeekData.weeksList[curWeek], curDifficulty);
 		#end
+	}
+	function changeMod(change:Int = 0) {
+		modNum += change;
+		if (modNum < modCats.length && modNum >= 0) {
+			WeekData.modNum = modNum;
+			WeekData.reloadWeekFiles(false);
+			grpWeekText.clear();
+			reloadWeeks();
+			updateText();
+			changeWeek(0);
+			
+		}
+
+		if (modNum > modCats.length-1)
+			modNum = modCats.length-1;
+		if (modNum < 0)
+			modNum = 0;
+
+		
+	}
+	function reloadWeeks() {
+		if(curWeek >= WeekData.weeksList.length) curWeek = 0;
+		var ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
+		for (i in 0...WeekData.weeksList.length)
+			{
+				WeekData.setDirectoryFromWeek(WeekData.weeksLoaded.get(WeekData.weeksList[i]));
+				var weekThing:MenuItem = new MenuItem(0, bgSprite.y + 396, WeekData.weeksList[i]);
+				weekThing.y += ((weekThing.height + 20) * i);
+				weekThing.targetY = i;
+				grpWeekText.add(weekThing);
+	
+
+				weekThing.screenCenter(X);
+				weekThing.antialiasing = ClientPrefs.globalAntialiasing;
+				// weekThing.updateHitbox();
+	
+				// Needs an offset thingie
+				if (weekIsLocked(i))
+				{
+					var lock:FlxSprite = new FlxSprite(weekThing.width + 10 + weekThing.x);
+					lock.frames = ui_tex;
+					lock.animation.addByPrefix('lock', 'lock');
+					lock.animation.play('lock');
+					lock.ID = i;
+					lock.antialiasing = ClientPrefs.globalAntialiasing;
+					grpLocks.add(lock);
+				}
+			}
+			
+	
+		
 	}
 }

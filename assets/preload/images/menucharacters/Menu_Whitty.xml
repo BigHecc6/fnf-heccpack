@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Menu_Whitty.png">
+	<!-- Created with Adobe Animate version 21.0.2.37893 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Idle0000" x="0" y="0" width="413" height="761" frameX="0" frameY="-2" frameWidth="422" frameHeight="763"/>
+	<SubTexture name="Idle0001" x="0" y="0" width="413" height="761" frameX="0" frameY="-2" frameWidth="422" frameHeight="763"/>
+	<SubTexture name="Idle0002" x="430" y="0" width="422" height="754" frameX="0" frameY="-9" frameWidth="422" frameHeight="763"/>
+	<SubTexture name="Idle0003" x="430" y="0" width="422" height="754" frameX="0" frameY="-9" frameWidth="422" frameHeight="763"/>
+	<SubTexture name="Idle0004" x="869" y="0" width="415" height="754" frameX="-1" frameY="-9" frameWidth="422" frameHeight="763"/>
+	<SubTexture name="Idle0005" x="869" y="0" width="415" height="754" frameX="-1" frameY="-9" frameWidth="422" frameHeight="763"/>
+	<SubTexture name="Idle0006" x="1301" y="0" width="415" height="750" frameX="0" frameY="-13" frameWidth="422" frameHeight="763"/>
+	<SubTexture name="Idle0007" x="1301" y="0" width="415" height="750" frameX="0" frameY="-13" frameWidth="422" frameHeight="763"/>
+	<SubTexture name="Idle0008" x="0" y="778" width="405" height="763" frameX="-8" frameY="0" frameWidth="422" frameHeight="763"/>
+	<SubTexture name="Idle0009" x="0" y="778" width="405" height="763" frameX="-8" frameY="0" frameWidth="422" frameHeight="763"/>
+	<SubTexture name="Idle0010" x="0" y="0" width="413" height="761" frameX="0" frameY="-2" frameWidth="422" frameHeight="763"/>
+	<SubTexture name="Idle0011" x="0" y="0" width="413" height="761" frameX="0" frameY="-2" frameWidth="422" frameHeight="763"/>
+	<SubTexture name="Idle0012" x="0" y="0" width="413" height="761" frameX="0" frameY="-2" frameWidth="422" frameHeight="763"/>
+</TextureAtlas>
