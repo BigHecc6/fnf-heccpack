@@ -57,5 +57,5 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           name: webbuild 
-          path: 'release' 
+          path: 'release/bin' 
  
