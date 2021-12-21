@@ -11,7 +11,7 @@ import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
-import flixel.text.FlxText;
+import flixel.text.FlxText; 
 import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
 import lime.utils.Assets;
@@ -40,6 +40,7 @@ class FreeplayState extends MusicBeatState
 	var charBG:FlxSprite;
 	var charName:FlxText;
 	private var boyfriendo:Boyfriend;
+	var chara:Array<String>;
 
 	public static var modNum:Int = 0;
 	var scoreText:FlxText;
@@ -103,7 +104,7 @@ class FreeplayState extends MusicBeatState
 		scoreBG = new FlxSprite(scoreText.x - 6, 0).makeGraphic(1, 66, 0xFF000000);
 		scoreBG.alpha = 0.6;
 
-		charBG = new FlxSprite(FlxG.width * 0.8, FlxG.height * 0.4).makeGraphic(100, 200, 0xFF000000);
+		charBG = new FlxSprite(FlxG.width * 0.8, FlxG.height * 0.3).makeGraphic(100, 200, 0xFF000000);
 		charBG.alpha = 0.6;
 
 		charName = new FlxText(FlxG.width * 0.9, FlxG.height * 0.4, 0, "test", 24);
@@ -119,7 +120,10 @@ class FreeplayState extends MusicBeatState
 		boyfriendo.setGraphicSize(Std.int(boyfriendo.width * 0.5), Std.int(boyfriendo.height * 0.5));
 		boyfriendo.updateHitbox();
 		
-
+		grpSongs = new FlxTypedGroup<Alphabet>();
+		add(grpSongs);
+		icons = new FlxTypedGroup<HealthIcon>();
+		add(icons);
 		
 		add(scoreBG);
 		add(charBG);
@@ -219,7 +223,7 @@ class FreeplayState extends MusicBeatState
 		while(ratingSplit[1].length < 2) { //Less than 2 decimals in it, add decimals then
 			ratingSplit[1] += '0';
 		}
-		modName.text = WeekData.modList.name;
+		modName.text = '[ ' + WeekData.modList.name + ' ]';
 		scoreText.text = 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
 		positionHighscore();
 
@@ -314,8 +318,10 @@ class FreeplayState extends MusicBeatState
 
 			PlayState.SONG = Song.loadFromJson(poop, songLowercase);
 			PlayState.isStoryMode = false;
+			bfList = Character.getBFs('images/characters/bflist.json');
 			PlayState.storyDifficulty = curDifficulty;
-			PlayState.daPlayer = bfList.chars[Character.curBF][0];
+			chara = bfList.chars[Character.curBF];
+			PlayState.daPlayer = chara[0];
 
 			trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
 			if(colorTween != null) {
@@ -465,21 +471,23 @@ class FreeplayState extends MusicBeatState
 
 		scoreBG.scale.x = FlxG.width - scoreText.x + 6;
 		scoreBG.x = FlxG.width - (scoreBG.scale.x / 2);
-		diffText.x = Std.int(scoreBG.x + (scoreBG.width / 4));
-		diffText.x -= diffText.width / 2;
+		diffText.x = FlxG.width - scoreText.width - 6;
+		
+
+		modName.x = FlxG.width - modName.width - 5;
 		
 		
 	}
 
 	private function positionCharacter() {
 		
-		charName.text = 'Player: ' + bfList.chars[Character.curBF][1];
+		charName.text = ' < Player: ' + bfList.chars[Character.curBF][1] + ' >';
 		boyfriendo.x = FlxG.width - boyfriendo.width;
 		boyfriendo.y = FlxG.height * 0.5;
 		boyfriendo.centerOrigin();
 
-		charBG.scale.x = 3;
-		charBG.scale.y = 1.5;
+		charBG.scale.x = 5;
+		charBG.scale.y = 1.8;
 		charBG.updateHitbox();
 		if (charName.width > boyfriendo.width) {
 			charName.x = FlxG.width - charName.width;
@@ -488,9 +496,9 @@ class FreeplayState extends MusicBeatState
 			charName.x = boyfriendo.x;
 			charBG.x = boyfriendo.x;
 		}
+		charName.y = charBG.y;
 
 		
-		boyfriendo.alpha = 0.4;
 		
 		trace(charBG.scale.x);
 	}
@@ -519,7 +527,7 @@ class FreeplayState extends MusicBeatState
 	function reloadWeeks() {
 		
 		songs = [];
-		bfList = Character.getBFs('characters/bflist.json');
+		bfList = Character.getBFs('images/characters/bflist.json');
 		for (i in 0...WeekData.weeksList.length) {
 			var leWeek:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[i]);
 			var leSongs:Array<String> = [];
@@ -543,10 +551,7 @@ class FreeplayState extends MusicBeatState
 		}
 		WeekData.setDirectoryFromWeek();
 		
-		grpSongs = new FlxTypedGroup<Alphabet>();
-		add(grpSongs);
-		icons = new FlxTypedGroup<HealthIcon>();
-		add(icons);
+
 
 		for (i in 0...songs.length)
 		{
@@ -586,14 +591,16 @@ class FreeplayState extends MusicBeatState
 	}
 
 	function changeChar(change:Int=0) {
+		bfList = Character.getBFs('images/characters/bflist.json');
 		Character.curBF += change;
 		
-		if (Character.curBF >= 0 && Character.curBF <= bfList.chars.length) {
+		if (Character.curBF >= 0 && Character.curBF <= bfList.chars.length-1) {
 			remove(boyfriendo);
 			if (Character.curBF == 0)
 				boyfriendo = new Boyfriend(0, 0, 'bf');
 			else
-				boyfriendo = new Boyfriend(0, 0, bfList.chars[Character.curBF][2]);
+				boyfriendo = new Boyfriend(0, 0, bfList.chars[Character.curBF][0]);
+			boyfriendo.updateHitbox();
 			boyfriendo.setGraphicSize(Std.int(boyfriendo.width * 0.5), Std.int(boyfriendo.height * 0.5));
 			boyfriendo.updateHitbox();
 			add(boyfriendo);

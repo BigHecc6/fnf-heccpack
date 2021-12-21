@@ -1,0 +1,48 @@
+{
+	"songs": [
+		[
+			"Wistfulness",
+			"mickey",
+			[
+				82,
+				89,
+				81
+			]
+		],
+		[
+			"Dejection",
+			"mouse-happy",
+			[
+				82,
+				89,
+				81
+			]
+		],
+		[
+			"Unknown Suffering",
+			"mouse",
+			[
+				82,
+				89,
+				81
+			]
+		]
+	],
+	"hideFreeplay": false,
+	"weekBackground": "suicide",
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"storyName": "Is Suicide Really the Best Option...?",
+	"weekName": "Custom Week",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"hideStoryMode": false,
+	"weekBefore": "weekz",
+	"startUnlocked": true
+}

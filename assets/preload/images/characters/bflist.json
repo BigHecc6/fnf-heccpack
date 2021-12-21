@@ -3,6 +3,7 @@
         ["bf", "BF", "BOYFRIEND"],
         ["bf-holding-gf", "BF and GF", "bfAndGF"],
         ["bf-pixel", "Pixel BF", "bfPixel"],
-	    ["fun-whitty", "Fun-Sized Whitty", "fun-whitty"]
+	["fun-whitty", "Fun-Sized Whitty", "fun-whitty"],
+	["bf-retro", "Retro BF", "BOYFRIEND_RETRO"]
     ]
 }

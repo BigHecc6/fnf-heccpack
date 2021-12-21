@@ -11,3 +11,5 @@ alley
 alleyBallistic
 maze
 deepmaze
+bobux
+vecindario

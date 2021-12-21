@@ -710,14 +710,19 @@ class PlayState extends MusicBeatState
 				add(bg);
 				var stageFront:BGSprite = new BGSprite('whittyFront', -650, 600, 0.9, 0.9);
 				add(stageFront);
-			case 'ballisticAlley': {
+			case 'ballisticAlley':
 				var bg:BGSprite = new BGSprite('BallisticBackground', -600, -200, 0.9, 0.9, ['Background Whitty Moving'], true);
 				add(bg);
 				var oohcool:BGSprite = new BGSprite('thefunnyeffect', -600, -200);
 				oohcool.alpha = 0.5;
 				foregrounds.add(oohcool);
 				oohcool.cameras = [camHUD];
-			}
+			case 'bobux':
+				var bg:BGSprite = new BGSprite('Destruido', -600, -200, 0.9, 0.9);
+				add(bg);
+			case 'vecindario':
+				var bg:BGSprite = new BGSprite('VecindarioBG', -600, -200, 0.9, 0.9);
+				add(bg);
 
 		
 		}
@@ -3001,6 +3006,32 @@ class PlayState extends MusicBeatState
 							songSpeedTween = null;
 						}
 					});
+				}
+			case 'Change Character Alpha':
+				var charType:Int = 0;
+				switch(value1) {
+					case 'gf' | 'girlfriend':
+						charType = 2;
+					case 'dad' | 'opponent':
+						charType = 1;
+					default:
+						charType = Std.parseInt(value1);
+						if(Math.isNaN(charType)) charType = 0;
+				}
+				var val2:String = value2;
+				var split:Array<String> = val2.split(',');
+				var alph:Float = 0;
+				var dur:Float = 0;
+				if(split[0] != null) alph = Std.parseFloat(split[0].trim());
+				if(split[1] != null) dur = Std.parseFloat(split[1].trim());
+
+				switch (charType) {
+					case 0:
+						FlxTween.tween(boyfriend, { alpha: alph }, dur);
+					case 1:
+						FlxTween.tween(dad, { alpha: alph }, dur);
+					case 2:
+						FlxTween.tween(gf, { alpha: alph }, dur);
 				}
 		}
 		callOnLuas('onEvent', [eventName, value1, value2]);

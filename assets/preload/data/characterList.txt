@@ -31,3 +31,13 @@ fun-whitty
 zardy
 zardydark
 cablecrow
+bf-portal
+bf-retro
+bf-suicide
+jank
+mouse
+mouse-happy
+mouse-phase2
+mouse-smile
+sad-mouse
+smileeeeer

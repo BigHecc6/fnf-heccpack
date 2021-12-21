@@ -4,12 +4,37 @@
 		"notes": [],
 		"events": [
 			[
+				148497.40932642465,
+				[
+					[
+						"Screen Shake",
+						"0.35, 0.05",
+						"0.35, 0.02"
+					],
+					[
+						"Change Character Alpha",
+						"1",
+						"0, 0.35 "
+					]
+				]
+			],
+			[
 				151632.1243523314,
 				[
 					[
 						"Change Character",
 						"1",
 						"cablecrow"
+					]
+				]
+			],
+			[
+				152253.88601036248,
+				[
+					[
+						"Change Character Alpha",
+						"1",
+						"1, 0.35 "
 					]
 				]
 			],
@@ -28,7 +53,7 @@
 		"needsVoices": true,
 		"speed": 2.8,
 		"player1": "bf",
-		"player2": "zardyButDARK",
+		"player2": "zardydark",
 		"player3": null,
 		"gfVersion": "gf",
 		"stage": "deepmaze",

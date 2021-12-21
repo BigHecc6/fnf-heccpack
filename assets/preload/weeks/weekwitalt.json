@@ -1,0 +1,22 @@
+{
+	"songs": [
+		["Ballistic Old", "whitty", [90, 79, 59]]
+	],
+
+	"weekCharacters": [
+		"whitty",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "alley",
+
+	"storyName": "Back Alley Blitz",
+	"weekBefore": "weekz",
+	"weekName": "Bomb Guy",
+	"startUnlocked": true,
+
+	"hideStoryMode": true,
+	"hideFreeplay": false,
+	"weekMod": "wit",
+	"difficulties": ""
+}

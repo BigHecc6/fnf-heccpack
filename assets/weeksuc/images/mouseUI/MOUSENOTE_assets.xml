@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="MOUSENOTE_assets.png">
+	<!-- Created with Adobe Animate version 21.0.7.42652 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="blue instancia 10000" x="0" y="0" width="53" height="175" frameX="-2" frameY="-2" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="blue instancia 10001" x="0" y="0" width="53" height="175" frameX="-6" frameY="-5" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="blue instancia 10002" x="53" y="0" width="53" height="175" frameX="0" frameY="-2" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="blue instancia 10003" x="0" y="0" width="53" height="175" frameX="-6" frameY="0" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="green instancia 10000" x="0" y="0" width="53" height="175" frameX="-3" frameY="-2" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="green instancia 10001" x="0" y="0" width="53" height="175" frameX="-7" frameY="-5" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="green instancia 10002" x="53" y="0" width="53" height="175" frameX="0" frameY="-2" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="green instancia 10003" x="0" y="0" width="53" height="175" frameX="-7" frameY="0" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="purple instancia 10000" x="0" y="0" width="53" height="175" frameX="-3" frameY="-2" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="purple instancia 10001" x="0" y="0" width="53" height="175" frameX="-7" frameY="-5" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="purple instancia 10002" x="53" y="0" width="53" height="175" frameX="0" frameY="-2" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="purple instancia 10003" x="0" y="0" width="53" height="175" frameX="-7" frameY="0" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="red instancia 10000" x="0" y="0" width="53" height="175" frameX="-3" frameY="-2" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="red instancia 10001" x="0" y="0" width="53" height="175" frameX="-7" frameY="-5" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="red instancia 10002" x="53" y="0" width="53" height="175" frameX="0" frameY="-2" frameWidth="60" frameHeight="180"/>
+	<SubTexture name="red instancia 10003" x="0" y="0" width="53" height="175" frameX="-7" frameY="0" frameWidth="60" frameHeight="180"/>
+</TextureAtlas>
