@@ -1,0 +1,24 @@
+{
+	"songs": [
+		["Light-It-Up", "matt", [0, 135, 0]],
+		["Ruckus", "matt", [0, 135, 0]],
+		["Target Practice", "matt", [0, 135, 0]]
+	],
+
+	"weekCharacters": [
+		"matt",
+		"bfMii",
+		"gfMii"
+	],
+	"weekBackground": "wiik1",
+
+	"storyName": "OMG ITS MATT FROM WII SPORTS",
+	"weekBefore": "weekz",
+	"weekName": "Black Man",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false,
+	"weekMod": "mat",
+	"difficulties": "Easy, Normal, Hard, Old"
+}

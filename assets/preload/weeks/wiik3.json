@@ -1,0 +1,25 @@
+{
+	"songs": [
+		["Fisticuffs", "matt", [0, 135, 0]],
+		["Wind-Up", "matt", [0, 135, 0]],
+		["Deathmatch", "matt", [0, 135, 0]],
+		["King-Hit", "matt", [0, 135, 0]]
+	],
+
+	"weekCharacters": [
+		"matt",
+		"bfMii",
+		"gfMii"
+	],
+	"weekBackground": "wiik1",
+
+	"storyName": "Matt is done with your shit",
+	"weekBefore": "wiik2",
+	"weekName": "Black Man3",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false,
+	"weekMod": "mat",
+	"difficulties": ""
+}

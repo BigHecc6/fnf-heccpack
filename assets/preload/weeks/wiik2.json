@@ -1,0 +1,23 @@
+{
+	"songs": [
+		["Sporting", "mattAngry", [0, 135, 0]],
+		["Boxing Match", "mattAngry", [0, 135, 0]]
+	],
+
+	"weekCharacters": [
+		"matt",
+		"bfMii",
+		"gfMii"
+	],
+	"weekBackground": "wiik2",
+
+	"storyName": "This isnt training anymore, kid.",
+	"weekBefore": "wiik1",
+	"weekName": "Black Man2",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false,
+	"weekMod": "mat",
+	"difficulties": ""
+}

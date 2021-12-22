@@ -1,0 +1,23 @@
+{
+	"songs": [
+		["King-Hit-Fefe", "mart", [0, 135, 0]],
+		["TKO", "matt", [0, 135, 0]]
+	],
+
+	"weekCharacters": [
+		"matt",
+		"bfMii",
+		"gfMii"
+	],
+	"weekBackground": "wiik1",
+
+	"storyName": "Extras",
+	"weekBefore": "wiik3",
+	"weekName": "Black Man4",
+	"startUnlocked": true,
+
+	"hideStoryMode": true,
+	"hideFreeplay": false,
+	"weekMod": "mat",
+	"difficulties": ""
+}
