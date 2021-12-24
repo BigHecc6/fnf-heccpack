@@ -71,7 +71,7 @@
 	"image": "characters/mart_fartsetts",
 	"position": [
 		0,
-		400
+		450
 	],
 	"healthicon": "mart",
 	"flip_x": false,
@@ -81,8 +81,8 @@
 		0
 	],
 	"camera_position": [
-		-140,
-		110
+		0,
+		0
 	],
 	"sing_duration": 4,
 	"scale": 1

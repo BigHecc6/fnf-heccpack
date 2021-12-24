@@ -7,10 +7,10 @@
 
 	"weekCharacters": [
 		"matt",
-		"bfMii",
-		"gfMii"
+		"bf",
+		"gf"
 	],
-	"weekBackground": "wiik1",
+	"weekBackground": "arena1",
 
 	"storyName": "OMG ITS MATT FROM WII SPORTS",
 	"weekBefore": "weekz",

@@ -1,0 +1,13 @@
+{
+	"directory": "wiik",
+	"defaultZoom": 0.9,
+	"isPixelStage": false,
+
+	"boyfriend": [970, 100],
+	"girlfriend": [400, 130],
+	"opponent": [100, 100],
+	"background": [
+		["bg2", "boxingnight2", -600, -200, 1.2, 1.2, 1.3, true],
+		["bg3", "boxingnight3", -600, -400, 1.1, 1.1, 1, true]
+	]
+}

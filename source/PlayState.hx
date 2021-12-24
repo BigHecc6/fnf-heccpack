@@ -51,6 +51,7 @@ import Achievements;
 import StageData;
 import FunkinLua;
 import DialogueBoxPsych;
+import Events;
 
 #if sys
 import sys.FileSystem;
@@ -196,6 +197,7 @@ class PlayState extends MusicBeatState
 	var phillyCityLightsEventTween:FlxTween;
 	var trainSound:FlxSound;
 	var foregrounds:FlxTypedGroup<BGSprite>;
+	var backgrounds:FlxTypedGroup<BGSprite>;
 
 	var limoKillingState:Int = 0;
 	var limo:BGSprite;
@@ -375,7 +377,15 @@ class PlayState extends MusicBeatState
 			
 				boyfriend: [770, 100],
 				girlfriend: [400, 130],
-				opponent: [100, 100]
+				opponent: [100, 100],
+				background: [
+					["bg", "stageback", -600, -200, 0.9, 0.9, 1, true],
+					["stageFront", "stagefront", -650, 600, 0.9, 0.9, 1.1, true],
+					["stageLight1", "stage_light", -125, -100, 0.9, 0.9, 1.1, false],
+					["stageLight2", "stage_light", 1225, -100, 0.9, 0.9, 1.1, false],
+					["stageCurtains", "stagecurtains", -500, -300, 1.3, 1.3, 0.9, false]
+				],
+				foreground: []
 			};
 		}
 
@@ -393,6 +403,18 @@ class PlayState extends MusicBeatState
 		gfGroup = new FlxSpriteGroup(GF_X, GF_Y);
 
 		foregrounds = new FlxTypedGroup<BGSprite>();
+		backgrounds = new FlxTypedGroup<BGSprite>();
+		var stages:Array<String> = CoolUtil.coolTextFile(Paths.txt('stages/stageList'));
+		var bgThing:BGSprite;
+		
+		var bgObjs:Array<Dynamic> = stageData.background;
+		
+
+	
+		
+		function doSpecialThings(stage:String) {
+			
+		}
 		switch (curStage)
 		{
 			case 'stage': //Week 1
@@ -641,10 +663,7 @@ class PlayState extends MusicBeatState
 				GameOverSubstate.endSoundName = 'gameOverEnd-pixel';
 				GameOverSubstate.characterName = 'bf-pixel-dead';
 
-				/*if(!ClientPrefs.lowQuality) { //Does this even do something?
-					var waveEffectBG = new FlxWaveEffect(FlxWaveMode.ALL, 2, -1, 3, 2);
-					var waveEffectFG = new FlxWaveEffect(FlxWaveMode.ALL, 2, -1, 5, 2);
-				}*/
+
 
 				var posX = 400;
 				var posY = 200;
@@ -666,63 +685,47 @@ class PlayState extends MusicBeatState
 					bg.antialiasing = false;
 					add(bg);
 				}
-			case 'tank': //week 7
-				var tankSky:BGSprite = new BGSprite('tankSky', -400, -400, 0, 0);
-				var tankBuildings:BGSprite = new BGSprite('tankBuildings', -200, 0, 0.3, 0.3);
-				tankBuildings.setGraphicSize(Std.int(tankBuildings.width * 1.1), Std.int(tankBuildings.height * 1.1));
-				tankBuildings.updateHitbox();
-				var tankRuins:BGSprite = new BGSprite('tankRuins', -200, 0, 0.35, 0.35);
-				tankRuins.setGraphicSize(Std.int(tankRuins.width * 1.1), Std.int(tankRuins.height * 1.1));
-				tankRuins.updateHitbox();
-				var tankWatchtower:BGSprite = new BGSprite('tankWatchtower', 100, 50, 0.5, 0.5, ['watchtower'], true);
-				var tankGround:BGSprite = new BGSprite('tankGround', -420, -150, 0.9, 0.9);
-				tankGround.setGraphicSize(Std.int(tankGround.width * 1.15), Std.int(tankGround.height * 1.15));
-				tankGround.updateHitbox();
-				var tankClouds:BGSprite = new BGSprite('tankClouds', -400, 0, 0.1, 0.1);
-				var tankMountains:BGSprite = new BGSprite('tankMountains', -300, -20, 0.2, 0.2);
-				tankMountains.setGraphicSize(Std.int(tankMountains.width*1.2), Std.int(tankMountains.height*1.2));
-				tankMountains.updateHitbox();
-				var tankRolling:BGSprite = new BGSprite('tankRolling', 300, 300, 0.5, 0.5, ['BG tank w lighting'], true);
-				var smokeLeft:BGSprite = new BGSprite('smokeLeft', -200, -100, 0.4, 0.4, ['SmokeBlurLeft'], true);
-				var smokeRight:BGSprite = new BGSprite('smokeRight', 1100, -100, 0.4, 0.4, ['SmokeRight'], true);
+			default:
+					/*
+					Background Syntax:
+					[object name, image name, x, y, scroll factor x, scroll factor y, scale, low quality, animations]
+					*/
+					for (obj in 0...bgObjs.length) {
+						var pp:Array<Dynamic> = bgObjs[obj];
+						var spec:String = pp[0];
+						var img:String = pp[1];
+						var ecks:Float = Std.parseFloat(pp[2]);
+						var why:Float = Std.parseFloat(pp[3]);
+						var screx:Float = Std.parseFloat(pp[4]);
+						var scry:Float = Std.parseFloat(pp[5]);
+						var scale:Float = Std.parseFloat(pp[6]);
+						var anims:Array<String> = pp[8];
+						var lq:Bool = pp[7];
 
 
-				add(tankSky);
-				add(tankClouds);
-				add(tankMountains);
-				add(tankBuildings);
-				add(tankRuins);
-				add(smokeLeft);
-				add(smokeRight);
-				add(tankWatchtower);
-				add(tankRolling);
-				add(tankGround);
-			case 'maze': //Zardy week 1
+						
+						if ((ClientPrefs.lowQuality && lq) || !ClientPrefs.lowQuality) {
+							if (anims == [ ]) {
+								bgThing = new BGSprite(img, ecks, why, screx, scry);
 
-				var bg:BGSprite = new BGSprite('Maze', -600, -200, 0.9, 0.9, ['Stage'], true);
-				add(bg);
-			case 'deepmaze': //Zardy week 2
+								bgThing.setGraphicSize(Std.int(bgThing.width * scale));
+								bgThing.updateHitbox();
+								bgThing.animation.play(anims[0]);
+								backgrounds.add(bgThing);
+							} else {
+								bgThing = new BGSprite(img, ecks, why, screx, scry, anims, true);
+								bgThing.setGraphicSize(Std.int(bgThing.width * scale));
+								bgThing.updateHitbox();
+								backgrounds.add(bgThing);
+							}
+							if (stageData.isPixelStage)
+								bgThing.antialiasing = false;
+						}
 
-				var bg:BGSprite = new BGSprite('Zardy2BG', -600, -200, 0.9, 0.9, ['BG'], true);
-				add(bg);
-			case 'alley':
-				var bg:BGSprite = new BGSprite('whittyBack', -500, -300, 0.9, 0.9);
-				add(bg);
-				var stageFront:BGSprite = new BGSprite('whittyFront', -650, 600, 0.9, 0.9);
-				add(stageFront);
-			case 'ballisticAlley':
-				var bg:BGSprite = new BGSprite('BallisticBackground', -600, -200, 0.9, 0.9, ['Background Whitty Moving'], true);
-				add(bg);
-				var oohcool:BGSprite = new BGSprite('thefunnyeffect', -600, -200);
-				oohcool.alpha = 0.5;
-				foregrounds.add(oohcool);
-				oohcool.cameras = [camHUD];
-			case 'bobux':
-				var bg:BGSprite = new BGSprite('Destruido', -600, -200, 0.9, 0.9);
-				add(bg);
-			case 'vecindario':
-				var bg:BGSprite = new BGSprite('VecindarioBG', -600, -200, 0.9, 0.9);
-				add(bg);
+								
+								
+					}
+					add(backgrounds);
 
 		
 		}
@@ -740,9 +743,7 @@ class PlayState extends MusicBeatState
 		add(dadGroup);
 		add(boyfriendGroup);
 		
-		if(curStage == 'spooky') {
-			add(halloweenWhite);
-		}
+
 
 		#if LUA_ALLOWED
 		luaDebugGroup = new FlxTypedGroup<DebugLuaText>();
@@ -828,6 +829,7 @@ class PlayState extends MusicBeatState
 		blammedLightsBlack.alpha = 0.0;
 
 		var gfVersion:String = SONG.gfVersion;
+		var daSong:String = Paths.formatToSongPath(curSong);
 		if(gfVersion == null || gfVersion.length < 1) {
 			switch (curStage)
 			{
@@ -840,6 +842,9 @@ class PlayState extends MusicBeatState
 				default:
 					gfVersion = 'gf';
 			}
+			if (daPlayer == 'bf-holding-gf' && daSong != 'stress')
+				gfVersion = 'gf-invisible';
+
 			SONG.gfVersion = gfVersion; //Fix for the Chart Editor
 		}
 
@@ -881,6 +886,9 @@ class PlayState extends MusicBeatState
 				insert(members.indexOf(dadGroup) - 1, evilTrail);
 			case 'deepmaze':
 				gf.alpha = 0;
+			case 'boxingarena':
+				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+				insert(members.indexOf(dadGroup) - 1, evilTrail);
 		}
 
 		var file:String = Paths.json(songName + '/dialogue'); //Checks for json/Psych Engine dialogue
@@ -946,6 +954,15 @@ class PlayState extends MusicBeatState
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
 		add(grpNoteSplashes);
+
+		switch (curStage) {
+			case "ballisticAlley":
+				var oohcool:BGSprite = new BGSprite('thefunnyeffect', -600, -200);
+				oohcool.alpha = 0.5;
+				foregrounds.add(oohcool);
+				oohcool.cameras = [camHUD];
+		}
+
 		add(foregrounds);
 		if(ClientPrefs.timeBarType == 'Song Name')
 		{
@@ -1130,7 +1147,7 @@ class PlayState extends MusicBeatState
 		}
 		#end
 		
-		var daSong:String = Paths.formatToSongPath(curSong);
+		
 		if (isStoryMode && !seenCutscene)
 		{
 			switch (daSong)
@@ -2834,7 +2851,16 @@ class PlayState extends MusicBeatState
 					FlxG.camera.zoom += camZoom;
 					camHUD.zoom += hudZoom;
 				}
-
+			case 'Ease On Zoom':
+				if(ClientPrefs.camZooms && FlxG.camera.zoom < 1.35) {
+					var camZoom:Float = Std.parseFloat(value1);
+					var duration:Float = Std.parseFloat(value2);
+					if(Math.isNaN(camZoom)) camZoom = 0.015;
+					if(Math.isNaN(duration)) duration = 1;
+					FlxTween.tween(FlxG.camera, { zoom: FlxG.camera.zoom+camZoom }, duration);
+					
+					
+				}
 			case 'Trigger BG Ghouls':
 				if(curStage == 'schoolEvil' && !ClientPrefs.lowQuality) {
 					bgGhouls.dance(true);

@@ -1,0 +1,52 @@
+{
+	"song": {
+		"song": "king-hit",
+		"notes": [],
+		"events": [
+			[
+				7111.11111111111,
+				[
+					[
+						"Ease On Zoom",
+						"0.1",
+						"0.3"
+					],
+					[
+						"Play Animation",
+						"snap",
+						"0"
+					],
+					[
+						"Camera Follow Pos",
+						"dad.x",
+						"dad.y"
+					]
+				]
+			],
+			[
+				8444.444444444443,
+				[
+					[
+						"Ease On Zoom",
+						"-0.1",
+						"0.3"
+					],
+					[
+						"Camera Follow Pos",
+						"",
+						""
+					]
+				]
+			]
+		],
+		"bpm": 270,
+		"needsVoices": true,
+		"speed": 3.7,
+		"player1": "bfmii",
+		"player2": "mattchill",
+		"player3": null,
+		"gfVersion": "gf-mii",
+		"stage": "boxingarena",
+		"validScore": false
+	}
+}

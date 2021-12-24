@@ -13,3 +13,8 @@ maze
 deepmaze
 bobux
 vecindario
+swordarena
+arenanight
+boxingarena
+boxtko
+boxtroll

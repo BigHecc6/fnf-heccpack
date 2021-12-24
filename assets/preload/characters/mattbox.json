@@ -60,7 +60,7 @@
 	"image": "characters/matt_box",
 	"position": [
 		0,
-		280
+		320
 	],
 	"healthicon": "mattAngry",
 	"flip_x": false,
@@ -70,8 +70,8 @@
 		0
 	],
 	"camera_position": [
-		-140,
-		110
+		0,
+		0
 	],
 	"sing_duration": 4,
 	"scale": 1

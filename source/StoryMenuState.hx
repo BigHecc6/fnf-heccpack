@@ -52,6 +52,7 @@ class StoryMenuState extends MusicBeatState
 	var sprDifficulty:FlxSprite;
 	var leftArrow:FlxSprite;
 	var rightArrow:FlxSprite;
+	var logo:FlxSprite;
 	
 
 	override function create()
@@ -101,6 +102,10 @@ class StoryMenuState extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 
+		logo = new FlxSprite(0, 0);
+		add(logo);
+
+
 		reloadWeeks();
 
 		var ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
@@ -134,7 +139,8 @@ class StoryMenuState extends MusicBeatState
 		sprDifficulty = new FlxSprite(0, leftArrow.y);
 		sprDifficulty.antialiasing = ClientPrefs.globalAntialiasing;
 		changeDifficulty();
-
+		logo.x = sprDifficulty.x + 20;
+		logo.y = sprDifficulty.y + 130;
 		difficultySelectors.add(sprDifficulty);
 
 		rightArrow = new FlxSprite(leftArrow.x + 376, leftArrow.y);
@@ -144,6 +150,8 @@ class StoryMenuState extends MusicBeatState
 		rightArrow.animation.play('idle');
 		rightArrow.antialiasing = ClientPrefs.globalAntialiasing;
 		difficultySelectors.add(rightArrow);
+
+
 
 		add(bgYellow);
 		add(bgSprite);
@@ -476,6 +484,10 @@ class StoryMenuState extends MusicBeatState
 	}
 	function reloadWeeks() {
 		if(curWeek >= WeekData.weeksList.length) curWeek = 0;
+		logo.loadGraphic(Paths.image('storylogos/' + modCats[modNum]));
+		logo.setGraphicSize(Std.int(logo.width * 0.3));
+		logo.updateHitbox();
+		
 		var ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
 		for (i in 0...WeekData.weeksList.length)
 			{

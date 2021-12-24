@@ -7,6 +7,7 @@ mom
 mom-car
 bf-car
 gf-car
+gf-invisible
 parents-christmas
 monster-christmas
 bf-christmas

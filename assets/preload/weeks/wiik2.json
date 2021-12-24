@@ -6,10 +6,10 @@
 
 	"weekCharacters": [
 		"matt",
-		"bfMii",
-		"gfMii"
+		"bf",
+		"gf"
 	],
-	"weekBackground": "wiik2",
+	"weekBackground": "arena2",
 
 	"storyName": "This isnt training anymore, kid.",
 	"weekBefore": "wiik1",

@@ -60,9 +60,9 @@
 	"image": "characters/matt_assets",
 	"position": [
 		0,
-		330
+		300
 	],
-	"healthicon": "mart",
+	"healthicon": "matt",
 	"flip_x": false,
 	"healthbar_colors": [
 		255,
@@ -70,8 +70,8 @@
 		0
 	],
 	"camera_position": [
-		-70,
-		90
+		0,
+		0
 	],
 	"sing_duration": 4,
 	"scale": 1

@@ -5,5 +5,8 @@
 
 	"boyfriend": [810, 240],
 	"girlfriend": [400, 130],
-	"opponent": [70, 240]
+	"opponent": [70, 240],
+	"background": [
+		["bg", "Zardy2BG", -600, -200, 0.9, 0.9, 1, true, ["BG"]]
+	]
 }

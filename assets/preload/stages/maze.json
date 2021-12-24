@@ -5,5 +5,8 @@
 
 	"boyfriend": [850, 240],
 	"girlfriend": [400, 270],
-	"opponent": [70, 240]
+	"opponent": [70, 240],
+	"background": [
+		["bg", "Maze", -600, -200, 0.9, 0.9, 1, true, ["Stage"]]
+	]
 }

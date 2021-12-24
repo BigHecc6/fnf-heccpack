@@ -60,7 +60,7 @@
 	"image": "characters/matt_tko",
 	"position": [
 		0,
-		240
+		300
 	],
 	"healthicon": "matt",
 	"flip_x": false,
@@ -70,8 +70,8 @@
 		0
 	],
 	"camera_position": [
-		-140,
-		110
+		0,
+		0
 	],
 	"sing_duration": 4,
 	"scale": 1

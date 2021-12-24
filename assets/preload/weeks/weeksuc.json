@@ -31,9 +31,9 @@
 	"hideFreeplay": false,
 	"weekBackground": "suicide",
 	"weekCharacters": [
-		"dad",
-		"bf",
-		"gf"
+		"invis",
+		"invis",
+		"invis"
 	],
 	"storyName": "Is Suicide Really the Best Option...?",
 	"weekName": "Custom Week",
