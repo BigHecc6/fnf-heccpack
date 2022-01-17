@@ -8,8 +8,7 @@
 	"opponent": [100, 100],
 	"background": [
 		["bg", "glitcher/stageback", -600, -200, 0.9, 0.9, 1, true],
-		["stageFront", "glitcher/stagefront", -650, 600, 0.9, 0.9, 1.1, true],
-		["bgw", "glitcher/WIREStageBack", -600, -200, 0.9, 0.9, 1, true]
+		["stageFront", "glitcher/stagefront", -650, 600, 0.9, 0.9, 1.1, true]
 	],
 	"foreground": [
 	]
