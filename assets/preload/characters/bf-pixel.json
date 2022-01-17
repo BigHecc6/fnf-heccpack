@@ -12,6 +12,17 @@
 			"name": "BF IDLE"
 		},
 		{
+			"loop": true,
+			"offsets": [
+				7,
+				0
+			],
+			"fps": 24,
+			"anim": "idle-l",
+			"indices": [],
+			"name": "BF IDLE"
+		},
+		{
 			"loop": false,
 			"offsets": [
 				0,
@@ -103,8 +114,8 @@
 	"no_antialiasing": true,
 	"image": "characters/bfPixel",
 	"position": [
-		0,
-		350
+		160,
+		510
 	],
 	"healthicon": "bf-pixel",
 	"flip_x": true,
@@ -114,8 +125,8 @@
 		246
 	],
 	"camera_position": [
-		50,
-		-60
+		90,
+		-120
 	],
 	"sing_duration": 4,
 	"scale": 6

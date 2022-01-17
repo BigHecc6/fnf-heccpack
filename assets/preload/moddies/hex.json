@@ -1,0 +1,10 @@
+{
+    "id": "hex",
+    "name": "VS Hex",
+    "weeks": [
+        "weekhex1",
+        "weekhex2",
+        "weekhexex"
+    ],
+    "modBefore": "mat"
+}

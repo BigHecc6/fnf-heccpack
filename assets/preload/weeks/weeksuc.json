@@ -44,5 +44,6 @@
 	],
 	"hideStoryMode": false,
 	"weekBefore": "weekz",
-	"startUnlocked": true
+	"startUnlocked": true,
+	"difficulties": "Hard"
 }

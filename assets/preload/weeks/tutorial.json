@@ -17,5 +17,6 @@
 
 	"hideStoryMode": false,
 	"hideFreeplay": false,
-	"weekMod": "og"
+	"weekMod": "og",
+	"difficulties": "Easy, Normal, Hard, bside"
 }

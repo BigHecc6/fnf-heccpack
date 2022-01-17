@@ -1,0 +1,25 @@
+{
+	"songs": [
+		["Dunk", "hex", [175, 234, 250]],
+		["Ram", "hex", [254, 18, 66]],
+		["Hello World", "hex", [42, 57, 111]],
+		["Glitcher", "hex-virus", [255, 0, 1]]
+	],
+
+	"weekCharacters": [
+		"hex",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "",
+
+	"storyName": "beep beep lettuce",
+	"weekBefore": "wiikEX",
+	"weekName": "Hex",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false,
+	"weekMod": "hex",
+	"difficulties": "Easy, Normal, Hard"
+}

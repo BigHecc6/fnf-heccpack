@@ -61,7 +61,9 @@ class LoadingState extends MusicBeatState
 		loadBar.screenCenter(X);
 		loadBar.antialiasing = ClientPrefs.globalAntialiasing;
 		add(loadBar);
-		
+		if (PlayState.SONG.alt == null) {
+			PlayState.SONG.alt = '';
+		}
 		initSongsManifest().onComplete
 		(
 			function (lib)
@@ -137,15 +139,16 @@ class LoadingState extends MusicBeatState
 		
 		MusicBeatState.switchState(target);
 	}
-	
+
 	static function getSongPath()
 	{
-		return Paths.inst(PlayState.SONG.song);
+		trace(PlayState.SONG.song + PlayState.SONG.alt  + '');
+		return Paths.inst(PlayState.SONG.song, PlayState.SONG.alt);
 	}
 	
 	static function getVocalPath()
 	{
-		return Paths.voices(PlayState.SONG.song);
+		return Paths.voices(PlayState.SONG.song, PlayState.SONG.alt);
 	}
 	
 	inline static public function loadAndSwitchState(target:FlxState, stopMusic = false)

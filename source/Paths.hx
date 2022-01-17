@@ -177,7 +177,7 @@ class Paths
 		return getPath('music/$key.$SOUND_EXT', MUSIC, library);
 	}
 
-	inline static public function voices(song:String):Any
+	inline static public function voices(song:String, alt:String):Any
 	{
 		#if MODS_ALLOWED
 		var file:Sound = returnSongFile(modsSongs(song.toLowerCase().replace(' ', '-') + '/Voices'));
@@ -185,10 +185,10 @@ class Paths
 			return file;
 		}
 		#end
-		return 'songs:assets/songs/${song.toLowerCase().replace(' ', '-')}/Voices.$SOUND_EXT';
+		return 'songs:assets/songs/${song.toLowerCase().replace(' ', '-')}/Voices${alt}.$SOUND_EXT';
 	}
 
-	inline static public function inst(song:String):Any
+	inline static public function inst(song:String, alt:String):Any
 	{
 		#if MODS_ALLOWED
 		var file:Sound = returnSongFile(modsSongs(song.toLowerCase().replace(' ', '-') + '/Inst'));
@@ -196,7 +196,7 @@ class Paths
 			return file;
 		}
 		#end
-		return 'songs:assets/songs/${song.toLowerCase().replace(' ', '-')}/Inst.$SOUND_EXT';
+		return 'songs:assets/songs/${song.toLowerCase().replace(' ', '-')}/Inst${alt}.$SOUND_EXT';
 	}
 
 	#if MODS_ALLOWED

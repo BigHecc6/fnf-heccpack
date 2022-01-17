@@ -1,0 +1,142 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				151,
+				83
+			],
+			"loop": false,
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Hex crazy left",
+			"indices": []
+		},
+		{
+			"offsets": [
+				61,
+				-44
+			],
+			"loop": false,
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Hex crazy down",
+			"indices": []
+		},
+		{
+			"offsets": [
+				80,
+				130
+			],
+			"loop": false,
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Hex crazy up",
+			"indices": []
+		},
+		{
+			"offsets": [
+				19,
+				-5
+			],
+			"loop": false,
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Hex crazy right",
+			"indices": []
+		},
+		{
+			"offsets": [
+				3,
+				14
+			],
+			"loop": false,
+			"anim": "idle",
+			"fps": 24,
+			"name": "Hex crazy idle",
+			"indices": []
+		},
+		{
+			"offsets": [
+				3,
+				14
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle-loop",
+			"indices": [
+				10,
+				11,
+				12,
+				12
+			],
+			"name": "Hex crazy idle"
+		},
+		{
+			"offsets": [
+				151,
+				83
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "singLEFT-loop",
+			"indices": [
+				12,
+				13,
+				14,
+				15
+			],
+			"name": "Hex crazy left"
+		},
+		{
+			"offsets": [
+				19,
+				-5
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "singRIGHT-loop",
+			"indices": [
+				15,
+				16,
+				17,
+				18
+			],
+			"name": "Hex crazy right"
+		},
+		{
+			"offsets": [
+				80,
+				130
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "singUP-loop",
+			"indices": [
+				56,
+				57,
+				58,
+				59
+			],
+			"name": "Hex crazy up"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/glitcherhex-virus",
+	"position": [
+		0,
+		130
+	],
+	"healthicon": "hex-virus",
+	"flip_x": false,
+	"healthbar_colors": [
+		229,
+		6,
+		0
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

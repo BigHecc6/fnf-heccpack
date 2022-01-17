@@ -18,6 +18,8 @@ import flixel.util.FlxTimer;
 import lime.net.curl.CURLCode;
 import flixel.graphics.FlxGraphic;
 import WeekData;
+import ModList.modNum as modNum;
+import ModList.modCats as modCats;
 
 using StringTools;
 
@@ -33,11 +35,9 @@ class StoryMenuState extends MusicBeatState
 
 	private static var lastDifficultyName:String = '';
 	var curDifficulty:Int = 1;
-	var modCats:Array<String> = CoolUtil.coolTextFile(Paths.getPreloadPath('moddies/mods.txt'));
 	var txtWeekTitle:FlxText;
 	var bgSprite:FlxSprite;
 
-	private static var modNum:Int = FreeplayState.modNum;
 	
 	private static var curWeek:Int = 0;
 
@@ -63,6 +63,8 @@ class StoryMenuState extends MusicBeatState
 
 		PlayState.isStoryMode = true;
 		WeekData.reloadWeekFiles(true);
+
+		modCats = CoolUtil.coolTextFile(Paths.getPreloadPath('moddies/mods.txt'));
 		
 		persistentUpdate = persistentDraw = true;
 
@@ -465,9 +467,9 @@ class StoryMenuState extends MusicBeatState
 	}
 	function changeMod(change:Int = 0) {
 		modNum += change;
-		if (modNum < modCats.length && modNum >= 0) {
-			WeekData.modNum = modNum;
-			WeekData.reloadWeekFiles(false);
+		if (modNum < modCats.length-1 && modNum >= 0) {
+			//WeekData.modNum = modNum;
+			WeekData.reloadWeekFiles(true);
 			grpWeekText.clear();
 			reloadWeeks();
 			updateText();
@@ -475,8 +477,8 @@ class StoryMenuState extends MusicBeatState
 			
 		}
 
-		if (modNum > modCats.length-1)
-			modNum = modCats.length-1;
+		if (modNum > modCats.length-2)
+			modNum = modCats.length-2;
 		if (modNum < 0)
 			modNum = 0;
 

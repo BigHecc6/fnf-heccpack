@@ -61,6 +61,7 @@ class TitleState extends MusicBeatState
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
+	public static var heccVer:String = '1.1';
 
 	var curWacky:Array<String> = [];
 
@@ -75,6 +76,7 @@ class TitleState extends MusicBeatState
 	var titleJSON:TitleData;
 	
 	public static var updateVersion:String = '';
+	public static var changelog:String = '';
 
 	override public function create():Void
 	{
@@ -127,29 +129,7 @@ class TitleState extends MusicBeatState
 		}
 		#end
 		
-		#if CHECK_FOR_UPDATES
-		if(!closedState) {
-			trace('checking for update');
-			var http = new haxe.Http("https://raw.githubusercontent.com/ShadowMario/FNF-PsychEngine/main/gitVersion.txt");
-			
-			http.onData = function (data:String)
-			{
-				updateVersion = data.split('\n')[0].trim();
-				var curVersion:String = MainMenuState.psychEngineVersion.trim();
-				trace('version online: ' + updateVersion + ', your version: ' + curVersion);
-				if(updateVersion != curVersion) {
-					trace('versions arent matching!');
-					mustUpdate = true;
-				}
-			}
-			
-			http.onError = function (error) {
-				trace('error: $error');
-			}
-			
-			http.request();
-		}
-		#end
+		
 
 		FlxG.game.focusLostFramerate = 60;
 		FlxG.sound.muteKeys = muteKeys;
@@ -168,6 +148,29 @@ class TitleState extends MusicBeatState
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 		ClientPrefs.loadPrefs();
+
+
+		#if CHECK_FOR_UPDATES
+		if(!closedState) {
+			if (FlxG.save.data.lastVersion != heccVer) {
+				trace('checking for update');
+				var http = new haxe.Http("https://raw.githubusercontent.com/BigHecc6/fnf-heccpack/main/changes.raw");
+				
+				http.onData = function (data:String)
+				{
+					changelog = data;
+					mustUpdate = true;
+				}
+				
+				http.onError = function (error) {
+					trace('error: $error');
+				}
+				
+				http.request();
+			}
+		}
+		#end
+
 
 		Highscore.load();
 

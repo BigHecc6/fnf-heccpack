@@ -143,6 +143,7 @@ class PlayState extends MusicBeatState
 
 	public var camZooming:Bool = false;
 	private var curSong:String = "";
+	public var altSong:String = '';
 
 	public var gfSpeed:Int = 1;
 	public var health:Float = 1;
@@ -261,6 +262,9 @@ class PlayState extends MusicBeatState
 	// Debug buttons
 	private var debugKeysChart:Array<FlxKey>;
 	private var debugKeysCharacter:Array<FlxKey>;
+
+	var bgObjs:Array<Dynamic> = [];
+	var fgObjs:Array<Dynamic> = [];
 	
 	// Less laggy controls
 	private var keysArray:Array<Dynamic>;
@@ -273,6 +277,9 @@ class PlayState extends MusicBeatState
 
 		// for lua
 		instance = this;
+		if (PlayState.SONG.alt == null) {
+			PlayState.SONG.alt = '';
+		}
 
 		debugKeysChart = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 		debugKeysCharacter = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_2'));
@@ -406,8 +413,11 @@ class PlayState extends MusicBeatState
 		backgrounds = new FlxTypedGroup<BGSprite>();
 		var stages:Array<String> = CoolUtil.coolTextFile(Paths.txt('stages/stageList'));
 		var bgThing:BGSprite;
+		var fgThing:BGSprite;
 		
-		var bgObjs:Array<Dynamic> = stageData.background;
+		bgObjs = stageData.background;
+		if (stageData.foreground != null) { fgObjs = stageData.foreground; }
+		
 		
 
 	
@@ -702,28 +712,39 @@ class PlayState extends MusicBeatState
 						var anims:Array<String> = pp[8];
 						var lq:Bool = pp[7];
 
-
-						
 						if ((ClientPrefs.lowQuality && lq) || !ClientPrefs.lowQuality) {
-							if (anims == [ ]) {
-								bgThing = new BGSprite(img, ecks, why, screx, scry);
-
-								bgThing.setGraphicSize(Std.int(bgThing.width * scale));
-								bgThing.updateHitbox();
-								bgThing.animation.play(anims[0]);
-								backgrounds.add(bgThing);
-							} else {
-								bgThing = new BGSprite(img, ecks, why, screx, scry, anims, true);
-								bgThing.setGraphicSize(Std.int(bgThing.width * scale));
-								bgThing.updateHitbox();
-								backgrounds.add(bgThing);
-							}
+							bgThing = new BGSprite(img, ecks, why, screx, scry, anims, true);
+							bgThing.setGraphicSize(Std.int(bgThing.width * scale));
+							bgThing.updateHitbox();
+							backgrounds.add(bgThing);
 							if (stageData.isPixelStage)
 								bgThing.antialiasing = false;
 						}
+			
+					}
+					if (fgObjs.length > 0) {
+						for (obj in 0...fgObjs.length) {
+							var pp:Array<Dynamic> = fgObjs[obj];
+							var spec:String = pp[0];
+							var img:String = pp[1];
+							var ecks:Float = Std.parseFloat(pp[2]);
+							var why:Float = Std.parseFloat(pp[3]);
+							var screx:Float = Std.parseFloat(pp[4]);
+							var scry:Float = Std.parseFloat(pp[5]);
+							var scale:Float = Std.parseFloat(pp[6]);
+							var anims:Array<String> = pp[8];
+							var lq:Bool = pp[7];
 
-								
-								
+							if ((ClientPrefs.lowQuality && lq) || !ClientPrefs.lowQuality) {
+								fgThing = new BGSprite(img, ecks, why, screx, scry, anims, true);
+								fgThing.setGraphicSize(Std.int(fgThing.width * scale));
+								fgThing.updateHitbox();
+								foregrounds.add(fgThing);
+								if (stageData.isPixelStage)
+									fgThing.antialiasing = false;
+							}
+				
+						}
 					}
 					add(backgrounds);
 
@@ -742,6 +763,7 @@ class PlayState extends MusicBeatState
 
 		add(dadGroup);
 		add(boyfriendGroup);
+		add(foregrounds);
 		
 
 
@@ -842,13 +864,17 @@ class PlayState extends MusicBeatState
 				default:
 					gfVersion = 'gf';
 			}
-			if (daPlayer == 'bf-holding-gf' && daSong != 'stress')
-				gfVersion = 'gf-invisible';
+
 
 			SONG.gfVersion = gfVersion; //Fix for the Chart Editor
-		}
 
-		gf = new Character(0, 0, gfVersion);
+				
+		}
+		if (daPlayer == 'bf-holding-gf' && daSong != 'stress')
+			gf = new Character(0, 0, 'gf-invisible');
+		else
+			gf = new Character(0, 0, gfVersion);
+		
 		startCharacterPos(gf);
 		gf.scrollFactor.set(0.95, 0.95);
 		gfGroup.add(gf);
@@ -858,10 +884,7 @@ class PlayState extends MusicBeatState
 		startCharacterPos(dad, true);
 		dadGroup.add(dad);
 		startCharacterLua(dad.curCharacter);
-		if (daPlayer == "bf")
-			boyfriend = new Boyfriend(0, 0, SONG.player1);
-		else if (daPlayer != "bf")
-			boyfriend = new Boyfriend(0, 0, daPlayer);
+		boyfriend = new Boyfriend(0, 0, daPlayer);
 		startCharacterPos(boyfriend);
 		boyfriendGroup.add(boyfriend);
 		startCharacterLua(boyfriend.curCharacter);
@@ -1700,8 +1723,8 @@ class PlayState extends MusicBeatState
 
 		previousFrameTime = FlxG.game.ticks;
 		lastReportedPlayheadPosition = 0;
-
-		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
+		altSong = PlayState.SONG.alt;
+		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song, altSong), 1, false);
 		FlxG.sound.music.onComplete = finishSong;
 		vocals.play();
 
@@ -1736,14 +1759,15 @@ class PlayState extends MusicBeatState
 		Conductor.changeBPM(songData.bpm);
 		
 		curSong = songData.song;
-
+		altSong = PlayState.SONG.alt;
+		trace(PlayState.SONG.song + altSong);
 		if (SONG.needsVoices)
-			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
+			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song, altSong));
 		else
 			vocals = new FlxSound();
 
 		FlxG.sound.list.add(vocals);
-		FlxG.sound.list.add(new FlxSound().loadEmbedded(Paths.inst(PlayState.SONG.song)));
+		FlxG.sound.list.add(new FlxSound().loadEmbedded(Paths.inst(PlayState.SONG.song, altSong)));
 
 		notes = new FlxTypedGroup<Note>();
 		add(notes);

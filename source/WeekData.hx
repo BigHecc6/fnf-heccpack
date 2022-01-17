@@ -9,6 +9,8 @@ import openfl.utils.Assets as OpenFlAssets;
 import haxe.Json;
 import haxe.format.JsonParser;
 import ModList.ModLister;
+import ModList.modNum as modNum;
+import ModList.modCats as modCats;
 
 using StringTools;
 
@@ -34,7 +36,7 @@ class WeekData {
 	public static var weeksList:Array<String> = [];
 	public var folder:String = '';
 	
-	public static var modNum:Int = 0;
+	//public static var modNum:Int = 0;
 	public static var modList:ModLister;
 	
 	
@@ -132,7 +134,7 @@ class WeekData {
 		#else
 		var directories:Array<String> = [Paths.getPreloadPath()];
 		var originalLength:Int = directories.length;
-		var modCats:Array<String> = CoolUtil.coolTextFile(Paths.getPreloadPath('moddies/mods.txt'));		#end
+		#end
 		
 		trace(modCats[modNum]);
 		modList = ModList.getMod(modCats[modNum]);

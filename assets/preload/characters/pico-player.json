@@ -12,6 +12,17 @@
 			"indices": []
 		},
 		{
+			"loop": true,
+			"offsets": [
+				3,
+				0
+			],
+			"anim": "idle-l",
+			"fps": 24,
+			"name": "Pico Idle Dance",
+			"indices": []
+		},
+		{
 			"loop": false,
 			"offsets": [
 				21,

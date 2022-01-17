@@ -1,0 +1,18 @@
+{
+	"directory": "weekhex",
+	"defaultZoom": 0.7,
+	"isPixelStage": false,
+
+	"boyfriend": [770, 200],
+	"girlfriend": [400, 230],
+	"opponent": [100, 100],
+	"background": [
+		["hexBack", "detected/hexBack", -400, -24, 0.9, 0.9, 1.8, true],
+		["hexFront", "detected/hexFront", -400, 24, 0.9, 0.9, 1.8, true],
+		["topOverlay", "detected/topOverlay", -400, 24, 0.9, 0.9, 1.8, true]
+		
+	],
+	"foreground": [
+		["crowd", "detected/crowd", -400, -14, 0.9, 0.9, 1.8, true, ["Symbol 1"]]
+	]
+}

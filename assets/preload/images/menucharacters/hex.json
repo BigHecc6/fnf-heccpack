@@ -1,0 +1,10 @@
+{
+	"idle_anim": "Dad idle dance",
+	"image": "Menu_Hex",
+	"position": [
+		140,
+		203
+	],
+	"scale": 0.5,
+	"confirm_anim": "M Dad Idle"
+}

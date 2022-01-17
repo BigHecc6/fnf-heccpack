@@ -35,6 +35,8 @@ class ModList
         ],
         "modBefore": "og"
     };
+    public static var modCats:Array<String> = CoolUtil.coolTextFile(Paths.getPreloadPath('moddies/mods.txt'));
+    public static var modNum:Int = 0;
 
     public static function getMod(mod:String):ModLister {
         var path:String = 'moddies/' + mod + '.json';

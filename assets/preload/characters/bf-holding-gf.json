@@ -13,6 +13,17 @@
 		},
 		{
 			"offsets": [
+				0,
+				0
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle-l",
+			"indices": [],
+			"name": "BF idle dance w gf"
+		},
+		{
+			"offsets": [
 				10,
 				3
 			],

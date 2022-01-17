@@ -14,3 +14,7 @@ wiik1
 wiik2
 wiik3
 wiikEX
+nword
+weekhex1
+weekhex2
+weekhexex

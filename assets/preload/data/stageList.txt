@@ -18,3 +18,7 @@ arenanight
 boxingarena
 boxtko
 boxtroll
+hex
+hexg
+hexn
+hexss

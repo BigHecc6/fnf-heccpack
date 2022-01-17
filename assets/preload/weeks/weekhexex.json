@@ -1,0 +1,25 @@
+{
+	"songs": [
+		["Encore", "hex", [175, 234, 250]],
+		["Glitcher Remix", "hex-media", [254, 18, 66]],
+		["Java", "hex", [67, 226, 255]],
+		["LCD", "hex", [67, 226, 255]]
+	],
+
+	"weekCharacters": [
+		"hex",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "",
+
+	"storyName": "beep boop lettuce",
+	"weekBefore": "weekhex2",
+	"weekName": "Hextras",
+	"startUnlocked": true,
+
+	"hideStoryMode": true,
+	"hideFreeplay": false,
+	"weekMod": "hex",
+	"difficulties": "funky"
+}

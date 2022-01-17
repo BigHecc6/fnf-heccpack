@@ -1,0 +1,23 @@
+{
+	"songs": [
+		["Cooling", "hex", [67, 226, 255]],
+		["Detected", "hex-media", [254, 18, 66]]
+	],
+
+	"weekCharacters": [
+		"hex",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "",
+
+	"storyName": "beep boop lettuce",
+	"weekBefore": "weekhex1",
+	"weekName": "Weekend X",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false,
+	"weekMod": "hex",
+	"difficulties": "funky"
+}

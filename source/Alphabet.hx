@@ -338,9 +338,9 @@ class Alphabet extends FlxSpriteGroup
 			var lerpVal:Float = CoolUtil.boundTo(elapsed * 9.6, 0, 1);
 			y = FlxMath.lerp(y, (scaledY * yMult) + (FlxG.height * 0.48) + yAdd, lerpVal);
 			if(forceX != Math.NEGATIVE_INFINITY) {
-				x = forceX;
+				//x = forceX;
 			} else {
-				x = FlxMath.lerp(x, (targetY * 20) + 90 + xAdd, lerpVal);
+				//x = FlxMath.lerp(x, (targetY * 50) + 90 + xAdd, lerpVal);
 			}
 		}
 

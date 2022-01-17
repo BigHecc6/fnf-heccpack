@@ -51,7 +51,7 @@
 	<define name="PSYCH_WATERMARKS"/> <!-- DELETE THIS TO REMOVE WATERMARKS ON TITLE SCREEN -->
 
 	<!-- DONT ENABLE THIS -->
-	<define name="CHECK_FOR_UPDATES" if="desktop officialBuild"/>
+	<define name="CHECK_FOR_UPDATES" if="web"/>
 
 	<!-- <define name="PRELOAD_ALL" /> -->
 	<define name="PRELOAD_ALL" unless="web" />
@@ -67,10 +67,12 @@
 		<library name="week5"         preload="true" />
 		<library name="week6"         preload="true" />
 		<library name="week7"         preload="true" />
+		<library name="exweek"          preload="true"/>
 		<library name="weekz"         preload="true" />
 		<library name="weekwit"       preload="true" />
 		<library name="weeksuc"       preload="true" />
 		<library name="wiik"          preload="true"/>
+		<library name="weekhex"          preload="true"/>
 	</section>
 	
 	<section if="NO_PRELOAD_ALL">
@@ -82,10 +84,12 @@
 		<library name="week5"         preload="false" />
 		<library name="week6"         preload="false" />
 		<library name="week7"         preload="false" />
+		<library name="exweek"          preload="false"/>
 		<library name="weekz"         preload="false" />
 		<library name="weekwit"       preload="false" />
 		<library name="weeksuc"       preload="false" />
 		<library name="wiik"          preload="false" />
+		<library name="weekhex"          preload="false"/>
 	</section>
 	
 	<assets path="plugins/"             rename=''               if="VIDEOS_ALLOWED windows" />
@@ -115,6 +119,10 @@
 	<assets path="assets/weeksuc"         library="weeksuc"         exclude="*.mp3" unless="web"/>
 	<assets path="assets/wiik"         library="wiik"         exclude="*.ogg" if="web"/>
 	<assets path="assets/wiik"         library="wiik"         exclude="*.mp3" unless="web"/>
+	<assets path="assets/exweek"         library="wiik"         exclude="*.ogg" if="web"/>
+	<assets path="assets/exweek"         library="wiik"         exclude="*.mp3" unless="web"/>
+	<assets path="assets/weekhex"         library="weekhex"         exclude="*.ogg" if="web"/>
+	<assets path="assets/weekhex"         library="weekhex"         exclude="*.mp3" unless="web"/>
 
 	<assets path='example_mods' rename='mods' embed='false' if="MODS_ALLOWED"/>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />

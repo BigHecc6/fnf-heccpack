@@ -148,7 +148,8 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.SONG = Song.loadFromJson(poop, name);
 					PlayState.storyDifficulty = curSelected;
 					CustomFadeTransition.nextCamera = transCamera;
-					MusicBeatState.resetState();
+						LoadingState.loadAndSwitchState(new PlayState());
+					
 					FlxG.sound.music.volume = 0;
 					//PlayState.changedDifficulty = true;
 					//PlayState.cpuControlled = false;

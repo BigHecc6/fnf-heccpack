@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-75,
+				-194
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Skipper Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-110,
+				-422
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Skipper Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-9,
+				-421
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Skipper Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-160,
+				-434
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Skipper Right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-10,
+				-494
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Skipper Down",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/EgoSkippa",
+	"position": [
+		0,
+		-30
+	],
+	"healthicon": "ego",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		0,
+		0
+	],
+	"camera_position": [
+		70,
+		450
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

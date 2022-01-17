@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="keys.png">
+	<!-- Created with Adobe Animate version 21.0.2.37893 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name=" brackets0000" x="0" y="0" width="527" height="383"/>
+	<SubTexture name="ctrlkey0000" x="544" y="0" width="313" height="200"/>
+	<SubTexture name="enterkey0000" x="874" y="0" width="385" height="171"/>
+	<SubTexture name="esckey0000" x="1276" y="0" width="188" height="115"/>
+	<SubTexture name="leftright0000" x="1481" y="0" width="527" height="383"/>
+	<SubTexture name="updown0000" x="0" y="400" width="527" height="383"/>
+</TextureAtlas>
