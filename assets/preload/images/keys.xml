@@ -2,10 +2,11 @@
 <TextureAtlas imagePath="keys.png">
 	<!-- Created with Adobe Animate version 21.0.2.37893 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name=" brackets0000" x="0" y="0" width="527" height="383"/>
-	<SubTexture name="ctrlkey0000" x="544" y="0" width="313" height="200"/>
-	<SubTexture name="enterkey0000" x="874" y="0" width="385" height="171"/>
-	<SubTexture name="esckey0000" x="1276" y="0" width="188" height="115"/>
-	<SubTexture name="leftright0000" x="1481" y="0" width="527" height="383"/>
-	<SubTexture name="updown0000" x="0" y="400" width="527" height="383"/>
+	<SubTexture name="brackets0000" x="0" y="0" width="261" height="133"/>
+	<SubTexture name="ctrl0000" x="278" y="0" width="145" height="121"/>
+	<SubTexture name="enter0000" x="440" y="0" width="290" height="112"/>
+	<SubTexture name="esc0000" x="747" y="0" width="157" height="87"/>
+	<SubTexture name="leftright0000" x="0" y="150" width="261" height="133"/>
+	<SubTexture name="tab0000" x="278" y="150" width="224" height="106"/>
+	<SubTexture name="updown0000" x="519" y="150" width="261" height="133"/>
 </TextureAtlas>

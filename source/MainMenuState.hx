@@ -1,5 +1,6 @@
 package;
 
+import js.html.AbortController;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -26,12 +27,13 @@ using StringTools;
 class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '0.5'; //This is also used for Discord RPC
-	public static var heccVerion:String = '1.1';
+	public static var heccVerion:String = '1.11';
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
+	private var camKeys:FlxCamera;
 	
 	var optionShit:Array<String> = [
 		'story_mode',
@@ -47,6 +49,10 @@ class MainMenuState extends MusicBeatState
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
+	var keys:KeyTip;
+
+	var psych:FlxText;
+	var versionShit:FlxText;
 
 	override function create()
 	{
@@ -60,10 +66,13 @@ class MainMenuState extends MusicBeatState
 
 		camGame = new FlxCamera();
 		camAchievement = new FlxCamera();
+		camKeys = new FlxCamera();
+		camKeys.bgColor.alpha = 0;
 		camAchievement.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camAchievement);
+		FlxG.cameras.add(camKeys);
 		FlxCamera.defaultCameras = [camGame];
 
 		transIn = FlxTransitionableState.defaultTransIn;
@@ -85,7 +94,9 @@ class MainMenuState extends MusicBeatState
 		add(camFollow);
 		add(camFollowPos);
 
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
+
+
+		magenta = new FlxSprite(-80).loadGraphic(Paths.image('old_menuDesat'));
 		magenta.scrollFactor.set(0, yScroll);
 		magenta.setGraphicSize(Std.int(magenta.width * 1.175));
 		magenta.updateHitbox();
@@ -127,15 +138,18 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
+		psych = new FlxText(12, FlxG.height - 44, 0, "Heccpack v" + heccVerion, 12);
+		psych.scrollFactor.set();
+		psych.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(psych);
+		versionShit = new FlxText(12, FlxG.height - 24, 0, "FNF v" + Application.current.meta.get('version') + " | PE v" + psychEngineVersion, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
+		keys = new KeyTip([["Back to Title", "esc"],["Scroll", "updown"], ["Select", "enter"]], false, camKeys);
+		add(keys);
+		keys.show(true);
 		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();
@@ -176,7 +190,8 @@ class MainMenuState extends MusicBeatState
 
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
-
+		psych.y = KeyTip.textBG.y - 44;
+		versionShit.y = KeyTip.textBG.y - 24;
 		if (!selectedSomethin)
 		{
 			if (controls.UI_UP_P)
@@ -206,6 +221,7 @@ class MainMenuState extends MusicBeatState
 				}
 				else
 				{
+					keys.hide(true);
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 

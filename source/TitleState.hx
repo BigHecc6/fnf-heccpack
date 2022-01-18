@@ -61,7 +61,7 @@ class TitleState extends MusicBeatState
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
-	public static var heccVer:String = '1.1';
+	public static var heccVer:String = '1.11';
 
 	var curWacky:Array<String> = [];
 

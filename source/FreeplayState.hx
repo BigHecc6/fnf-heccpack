@@ -18,6 +18,7 @@ import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import lime.utils.Assets;
 import flixel.system.FlxSound;
+import Random;
 import openfl.utils.Assets as OpenFlAssets;
 import WeekData;
 import Character;
@@ -61,6 +62,7 @@ class FreeplayState extends MusicBeatState
 	private var icon:HealthIcon;
 	private var keyIcons:FlxTypedGroup<FlxSprite>;
 	private var freeArrow:FlxSprite; 
+	private var checkerboard:FlxSprite;
 	private var curPlaying:Bool = false;
 	private var keyArray:Array<Dynamic>;
 
@@ -78,6 +80,7 @@ class FreeplayState extends MusicBeatState
 	var moveScore:Bool = false;
 	var logo:FlxSprite;
 	var ofs:Int;
+	var keys:KeyTip;
 
 	var canControl:Bool = true;
 	
@@ -112,6 +115,15 @@ class FreeplayState extends MusicBeatState
 		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
+
+		checkerboard = new FlxSprite(0, 0);
+		checkerboard.frames = Paths.getSparrowAtlas('cool-checkerboard');
+		checkerboard.setGraphicSize(Std.int(checkerboard.width*2));
+		checkerboard.updateHitbox();
+		checkerboard.antialiasing = false;
+		checkerboard.animation.addByPrefix('cool', 'scroll', 30, true);
+		checkerboard.animation.play('cool');
+		add(checkerboard);
 
 		var swag:Alphabet = new Alphabet(1, 0, "swag");
 
@@ -169,32 +181,19 @@ class FreeplayState extends MusicBeatState
 		add(logo);
 		
 
-		
-		//changeChar(0);
 
-		textBG = new FlxSprite(0, FlxG.height - 52).makeGraphic(FlxG.width, 52, 0xFF000000);
-		textBG.alpha = 0.6;
-		add(textBG);
+		keys = new KeyTip([['Back', 'esc'], ['Scroll', 'updown'], ['Switch Mod', 'brackets'], ['Modifiers', 'ctrl'], ['Change Diff.', 'leftright'], ['Random', 'tab'], ['Select', 'enter']], false);
+		add(keys);
+		keys.show(true);
 
-
-		#if PRELOAD_ALL
-		var size:Int = 16;
-		#else
-		var leText:String = "Back:   | Switch Mod:      | Modifiers:    | Switch Song:       | Change Difficulty:      | Select:    ";
-		var size:Int = 18;
-		#end
-		text = new FlxText(textBG.x, textBG.y + 4 + 13, FlxG.width, leText, size);
-		text.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, LEFT);
-		text.scrollFactor.set();
-		modName = new FlxText(FlxG.width * 0.9, textBG.y + 4 + 13, 0, "", 24);
+		modName = new FlxText(FlxG.width * 0.9, FlxG.height - 35, 0, "", 24);
 		modName.setFormat(Paths.font("vcr.ttf"), 18, FlxColor.WHITE, CENTER);
 		add(modName);
-		add(text);
-		add(keyIcons);
+
 
 
 		reloadWeeks();
-		keyBinds([['esckey', 60, 20], ['brackets', 225, 3], ['ctrlkey', 415, 15], ['updown', 605, 3], ['leftright', 890, 3], ['enter', 1050, 15]]);
+		
 
 		super.create();
 	}
@@ -263,6 +262,7 @@ class FreeplayState extends MusicBeatState
 
 		var upP = controls.UI_UP_P;
 		var downP = controls.UI_DOWN_P;
+		var random = FlxG.keys.justPressed.TAB;
 		var accepted = controls.ACCEPT;
 		var space = FlxG.keys.justPressed.SPACE;
 		var ctrl = FlxG.keys.justPressed.CONTROL;
@@ -309,14 +309,20 @@ class FreeplayState extends MusicBeatState
 					changeMod(1);
 			}
 
-
+			if (random && !charTime) {
+				var pp:Int = Random.int(1,songs.length-1);
+				changeSelection(pp, true, true);
+				haxe.Log.trace(pp);
+			}
 
 			if (controls.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				if (charTime) {
 					
-					tweenBinds(false);
+
+					keys.hide(true);
+					FlxTween.tween(modName, { y: (FlxG.height) }, 0.2, { ease: FlxEase.quadIn } );
 					FlxTween.tween(chooseT, {y: 0 - chooseT.height }, 0.2, { ease: FlxEase.quadOut } );
 					FlxTween.tween(charName, {y: 0 - charName.height }, 0.2, { ease: FlxEase.quadOut } );
 					FlxTween.tween(boyfriendo, { y: -FlxG.height }, 0.3, { ease: FlxEase.quadOut, onComplete: songSelectSwitch } );
@@ -407,13 +413,16 @@ class FreeplayState extends MusicBeatState
 					moveScore = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 					FlxTween.tween(logo, { x: FlxG.width }, 0.2, { ease: FlxEase.quadIn });
-					FlxTween.tween(scoreText, { x: FlxG.width }, 0.2, { ease: FlxEase.quadIn });
+					FlxTween.tween(modName, { y: (FlxG.height) }, 0.2, { ease: FlxEase.quadIn } );
+					FlxTween.tween(scoreText, { x: FlxG.width }, 0.2, { ease: FlxEase.quadIn, onComplete: charSwitchingTime });
 					for (i in grpSongs.members) {
-						FlxTween.tween(i, { x: -1200 }, 0.2, { ease: FlxEase.quadIn, onComplete: charSwitchingTime });
+						FlxTween.tween(i, { x: -1200 }, 0.2, { ease: FlxEase.quadIn });
 					}
 					
 				}
-				tweenBinds(false);
+
+				keys.hide(true);
+				FlxTween.tween(modName, { y: (FlxG.height) }, 0.2, { ease: FlxEase.quadIn } );
 
 
 			}
@@ -470,11 +479,15 @@ class FreeplayState extends MusicBeatState
 		}
 	}
 
-	function changeSelection(change:Int = 0, playSound:Bool = true)
+	function changeSelection(change:Int = 0, playSound:Bool = true, changeTo:Bool = false)
 	{
 		if(playSound) FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
+		if (changeTo) {
+			curSelected = change;
+		} else {
+			curSelected += change;
+		}
 
-		curSelected += change;
 
 		if (curSelected < 0)
 			curSelected = songs.length - 1;
@@ -577,27 +590,12 @@ class FreeplayState extends MusicBeatState
 		//scoreBG.x = FlxG.width - (scoreBG.scale.x / 2);
 		
 		scoreBG.x = scoreText.x+(scoreText.width/2);
-		trace(logo.width);
 		diffText.x = (scoreText.x + (scoreText.width/2))-(diffText.width/2);
 		modName.x = FlxG.width - modName.width - 5;
 		
 		
 	}
-	private function keyBinds(array:Array<Dynamic>) {
-		keyArray = array;
-		keyIcons.clear();
-		for (i in 0...array.length) {
-			var key:FlxSprite = new FlxSprite(0, FlxG.height);
-			key.frames = Paths.getSparrowAtlas('keys');
-			key.animation.addByPrefix('butt', array[i][0], 1, false);
-			key.setGraphicSize(Std.int(key.width * 0.12));
-			key.updateHitbox();
-			keyIcons.add(key);
-			key.animation.play('butt');
-			key.x = array[i][1];
-			tweenBinds(true);
-		}
-	}
+
 
 	function changeMod(change:Int = 0) {
 		modNum += change;
@@ -752,8 +750,8 @@ class FreeplayState extends MusicBeatState
 	function charSwitchingTime(tween:FlxTween) {
 		charTime = true;
 		toggleControl(true);
-		text.text = "Back:    | Switch Character:      | Funk:    ";
-		keyBinds([['esckey', 60, 20], ['leftright', 300, 3], ['enter', 435, 15]]);
+		keys.changeKeys([['Back', 'esc'], ['Switch Character', 'leftright'], ['Funk', 'enter']]);
+		FlxTween.tween(modName, { y: (FlxG.height-52) + 4 + 13 }, 0.2, { ease: FlxEase.quadOut } );
 		charName.alpha = 1;
 		FlxTween.tween(chooseT, {y: 10 }, 0.2, { ease: FlxEase.quadOut } );
 		FlxTween.tween(charName, {y: 100 }, 0.2, { ease: FlxEase.quadOut } );
@@ -767,30 +765,15 @@ class FreeplayState extends MusicBeatState
 		var bfY:Float = (FlxG.height / 2) - (boyfriendo.height / 2);
 		FlxTween.tween(boyfriendo, { y: bfY + 90 }, 0.3, { ease: FlxEase.quadOut } );
 	}
-	function tweenBinds(show:Bool) {
-		if (show) {
-			FlxTween.tween(textBG, { y: FlxG.height - 52 }, 0.2, { ease: FlxEase.quadOut } );
-			FlxTween.tween(text, { y: (FlxG.height-52) + 4 + 13 }, 0.2, { ease: FlxEase.quadOut } );
-			FlxTween.tween(modName, { y: (FlxG.height-52) + 4 + 13 }, 0.2, { ease: FlxEase.quadOut } );
-			for (i in 0...keyIcons.members.length) {
-				FlxTween.tween(keyIcons.members[i], { y: (FlxG.height - 52) + keyArray[i][2] }, 0.2, { ease: FlxEase.quadOut } );
-			}
-		} else {
-			FlxTween.tween(textBG, { y: FlxG.height }, 0.2, { ease: FlxEase.quadIn } );
-			FlxTween.tween(text, { y: FlxG.height }, 0.2, { ease: FlxEase.quadIn } );
-			FlxTween.tween(modName, { y: FlxG.height }, 0.2, { ease: FlxEase.quadIn } );
-			for (i in 0...keyIcons.members.length) {
-				FlxTween.tween(keyIcons.members[i], { y: FlxG.height }, 0.2, { ease: FlxEase.quadIn } );
-			}
-		}
-	}
+	
 	function songSelectSwitch(tween:FlxTween) {
 		charTime = false;
 		reloadWeeks();
+		FlxTween.tween(modName, { y: (FlxG.height-52) + 4 + 13 }, 0.2, { ease: FlxEase.quadOut } );
 		changeMod(0);
 		toggleControl(true);
-		text.text = "Back:   | Switch Mod:      | Modifiers:    | Switch Song:       | Change Difficulty:      | Select:    ";
-		keyBinds([['esckey', 60, 20], ['brackets', 225, 3], ['ctrlkey', 415, 15], ['updown', 605, 3], ['leftright', 890, 3], ['enter', 1050, 15]]);
+		keys.changeKeys([['Back', 'esc'], ['Scroll', 'updown'], ['Switch Mod', 'brackets'], ['Modifiers', 'ctrl'], ['Change Diff.', 'leftright'], ['Random', 'tab'], ['Select', 'enter']]);
+		
 	}
 
 	function toggleControl(control:Bool) {

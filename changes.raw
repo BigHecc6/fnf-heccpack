@@ -1,5 +1,4 @@
-+ The Freeplay menu has been revamped
-+ Added Vs. Skippa, B-Side, and VS Hex
-+ Added changelog
-+ Changed menu sounds/music
-+ Fixed some bugs
++ Added checkerboard pattern to Freeplay
++ Global keybind hint handler (will be expanded later)
++ Select a random song with the tab button in Freeplay
++ Versions in the main menu updated to incorporate the Heccpack version
