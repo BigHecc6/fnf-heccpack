@@ -18,3 +18,4 @@ nword
 weekhex1
 weekhex2
 weekhexex
+obama

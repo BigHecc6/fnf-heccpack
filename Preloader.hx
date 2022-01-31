@@ -30,8 +30,8 @@ class Preloader extends FlxBasePreloader
         logo = new Sprite();
         logo.addChild(new Bitmap(new LogoImage(0,0))); //Sets the graphic of the sprite to a Bitmap object, which uses our embedded BitmapData class.
         logo.scaleX = logo.scaleY = ratio;
-        logo.x = ((this._width) / 2) - ((logo.width) / 2);
-        logo.y = (this._height / 2) - ((logo.height) / 2);
+        logo.x = ((FlxG.width) / 2) - ((logo.width) / 2);
+        logo.y = (FlxG.height / 2) - ((logo.height) / 2);
         addChild(logo); //Adds the graphic to the NMEPreloader's buffer.
          
         super.create();
@@ -43,13 +43,13 @@ class Preloader extends FlxBasePreloader
         {
             logo.scaleX += Percent / 1920;
             logo.scaleY += Percent / 1920;
-            logo.x -= Percent * 0.6;
-            logo.y -= Percent / 2;
+            //logo.x -= Percent * 0.6;
+            //logo.y -= Percent / 2;
         }else{
             logo.scaleX = this._width / 1280;
             logo.scaleY = this._width / 1280;
-            logo.x = ((this._width) / 2) - ((logo.width) / 2);
-            logo.y = (this._height / 2) - ((logo.height) / 2);
+            //logo.x = ((this._width) / 2) - ((logo.width) / 2);
+            //logo.y = (this._height / 2) - ((logo.height) / 2);
         }
         
         super.update(Percent);

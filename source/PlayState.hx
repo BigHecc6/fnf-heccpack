@@ -870,11 +870,20 @@ class PlayState extends MusicBeatState
 
 				
 		}
-		if (daPlayer == 'bf-holding-gf' && daSong != 'stress')
-			gf = new Character(0, 0, 'gf-invisible');
-		else
-			gf = new Character(0, 0, gfVersion);
-		
+		if (!isStoryMode) {
+			trace(curSong);
+			if (daPlayer == 'bf-holding-gf') {
+				if (curSong == 'Stress') {
+					gf = new Character(0, 0, 'pico-speaker');
+				} else {
+					gf = new Character(0, 0, 'gf-invisible');
+				}
+			} else {
+				gf = new Character(0, 0, gfVersion);
+			}
+			
+		}
+
 		startCharacterPos(gf);
 		gf.scrollFactor.set(0.95, 0.95);
 		gfGroup.add(gf);
@@ -884,7 +893,13 @@ class PlayState extends MusicBeatState
 		startCharacterPos(dad, true);
 		dadGroup.add(dad);
 		startCharacterLua(dad.curCharacter);
-		boyfriend = new Boyfriend(0, 0, daPlayer);
+
+		if (isStoryMode) {
+			boyfriend = new Boyfriend(0, 0, SONG.player1);
+		} else {
+			boyfriend = new Boyfriend(0, 0, daPlayer);
+		}
+		
 		startCharacterPos(boyfriend);
 		boyfriendGroup.add(boyfriend);
 		startCharacterLua(boyfriend.curCharacter);
@@ -3222,8 +3237,9 @@ class PlayState extends MusicBeatState
 			return;
 		} else {
 			var achieve:String = checkForAchievement(['week1_nomiss', 'week2_nomiss', 'week3_nomiss', 'week4_nomiss',
-				'week5_nomiss', 'week6_nomiss', 'week7_nomiss', 'ur_bad',
-				'ur_good', 'hype', 'two_keys', 'toastie', 'debugger']);
+				'week5_nomiss', 'week6_nomiss', 'week7_nomiss', 'weekwit_nomiss',
+				 'weekz_nomiss', 'weekz_nomiss', 'weeksuc_nomiss', 'wiik1_nomiss', 'wiik2_nomiss', 'wiik3_nomiss', 'hex1_nomiss', 'hex2_nomiss', 'mod_complete', 'ur_bad',
+				'ur_good', 'hype', 'two_keys', 'toastie', 'debugger', 'ohgod']);
 
 			if(achieve != null) {
 				startAchievement(achieve);
@@ -3886,6 +3902,14 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	function healthDrain(length:Float, amount:Float)
+		{
+			new FlxTimer().start(0.125, function(tmr:FlxTimer){
+				if(!paused)
+					health -= amount;
+			}, 50);
+		}
+
 	function goodNoteHit(note:Note):Void
 	{
 		if (!note.wasGoodHit)
@@ -3904,6 +3928,8 @@ class PlayState extends MusicBeatState
 							boyfriend.playAnim('hurt', true);
 							boyfriend.specialAnim = true;
 						}
+					case 'Trap Note':
+						healthDrain(0.125, 0.025);
 				}
 				
 				note.wasGoodHit = true;
@@ -4452,7 +4478,7 @@ class PlayState extends MusicBeatState
 				var unlock:Bool = false;
 				switch(achievementName)
 				{
-					case 'week1_nomiss' | 'week2_nomiss' | 'week3_nomiss' | 'week4_nomiss' | 'week5_nomiss' | 'week6_nomiss' | 'week7_nomiss':
+					case 'week1_nomiss' | 'week2_nomiss' | 'week3_nomiss' | 'week4_nomiss' | 'week5_nomiss' | 'week6_nomiss' | 'week7_nomiss' | 'weekwit_nomiss' | 'weekz_nomiss' | 'weeksuc_nomiss' | 'wiik1_nomiss' | 'wiik2_nomiss' | 'wiik3_nomiss' | 'hex1_nomiss' | 'hex2_nomiss':
 						if(isStoryMode && campaignMisses + songMisses < 1 && CoolUtil.difficultyString() == 'HARD' && storyPlaylist.length <= 1 && !changedDifficulty && !usedPractice)
 						{
 							var weekName:String = WeekData.getWeekFileName();
@@ -4472,6 +4498,20 @@ class PlayState extends MusicBeatState
 									if(achievementName == 'week6_nomiss') unlock = true;
 								case 'week7':
 									if(achievementName == 'week7_nomiss') unlock = true;
+								case 'weekwit':
+									if (achievementName == 'weekwit_nomiss') unlock = true;
+								case 'weeksuc':
+									if (achievementName == 'weeksuc_nomiss') unlock = true;
+								case 'wiik1':
+									if (achievementName == 'wiik1_nomiss') unlock = true;
+								case 'wiik2':
+									if (achievementName == 'wiik2_nomiss') unlock = true;
+								case 'wiik3':
+									if (achievementName == 'wiik3_nomiss') unlock = true;
+								case 'weekhex1':
+										if (achievementName == 'hex1_nomiss') unlock = true;
+								case 'weekhex2':
+										if (achievementName == 'hex2_nomiss') unlock = true;
 							}
 						}
 					case 'ur_bad':

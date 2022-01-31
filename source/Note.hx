@@ -68,6 +68,7 @@ class Note extends FlxSprite
 
 	public var noAnimation:Bool = false;
 	public var hitCausesMiss:Bool = false;
+	public var noteSound:String = '';
 	public var distance:Float = 2000;//plan on doing scroll directions soon -bb
 
 	private function set_texture(value:String):String {
@@ -103,6 +104,29 @@ class Note extends FlxSprite
 					noAnimation = true;
 				case 'GF Sing':
 					gfNote = true;
+				case 'Spam Note':
+					ignoreNote = mustPress;
+					reloadNote('SPAM');
+					noteSplashTexture = 'SPAMnoteSplashes';
+					colorSwap.hue = 0;
+					colorSwap.saturation = 0;
+				case 'Ghost Note':
+					ignoreNote = mustPress;
+					reloadNote('GHOST');
+					noteSplashTexture = 'GHOSTnoteSplashes';
+					missHealth = 0.4;
+					hitCausesMiss = true;
+				case 'Trap Note':
+					ignoreNote = mustPress;
+					reloadNote('TRAP');
+					noteSplashTexture = 'TRAPnoteSplashes';
+					hitCausesMiss = true;
+				case 'Thorn Note':
+					ignoreNote = mustPress;
+					reloadNote('THORN');
+					missHealth = 0.2;
+					hitCausesMiss = true;
+
 			}
 			noteType = value;
 		}

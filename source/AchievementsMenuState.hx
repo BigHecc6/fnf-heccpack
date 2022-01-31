@@ -25,6 +25,7 @@ class AchievementsMenuState extends MusicBeatState
 	private var achievementArray:Array<AttachedAchievement> = [];
 	private var achievementIndex:Array<Int> = [];
 	private var descText:FlxText;
+	private var keys:KeyTip;
 
 	override function create() {
 		#if desktop
@@ -69,6 +70,10 @@ class AchievementsMenuState extends MusicBeatState
 		descText.borderSize = 2.4;
 		add(descText);
 		changeSelection();
+
+		keys = new KeyTip([["Back", "esc"], ["Scroll", "updown"]], false);
+		add(keys);
+		keys.show(true);
 
 		super.create();
 	}

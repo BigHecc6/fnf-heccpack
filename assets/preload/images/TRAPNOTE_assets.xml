@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="TRAPNOTE_assets.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="blue0000" x="0" y="0" width="180" height="157"/>
+	<SubTexture name="blue0001" x="0" y="0" width="180" height="157"/>
+	<SubTexture name="blue0002" x="180" y="0" width="180" height="157"/>
+	<SubTexture name="blue0003" x="180" y="0" width="180" height="157"/>
+	<SubTexture name="blue0004" x="360" y="0" width="180" height="157"/>
+	<SubTexture name="blue0005" x="360" y="0" width="180" height="157"/>
+	<SubTexture name="purple0000" x="540" y="0" width="157" height="180"/>
+	<SubTexture name="purple0001" x="540" y="0" width="157" height="180"/>
+	<SubTexture name="purple0002" x="697" y="0" width="156" height="180" frameX="0" frameY="0" frameWidth="157" frameHeight="180"/>
+	<SubTexture name="purple0003" x="697" y="0" width="156" height="180" frameX="0" frameY="0" frameWidth="157" frameHeight="180"/>
+	<SubTexture name="purple0004" x="853" y="0" width="157" height="180"/>
+	<SubTexture name="purple0005" x="853" y="0" width="157" height="180"/>
+	<SubTexture name="red0000" x="0" y="180" width="156" height="180"/>
+	<SubTexture name="red0001" x="0" y="180" width="156" height="180"/>
+	<SubTexture name="red0002" x="156" y="180" width="156" height="180"/>
+	<SubTexture name="red0003" x="156" y="180" width="156" height="180"/>
+	<SubTexture name="red0004" x="312" y="180" width="156" height="180"/>
+	<SubTexture name="red0005" x="312" y="180" width="156" height="180"/>
+	<SubTexture name="green0000" x="468" y="180" width="180" height="157"/>
+	<SubTexture name="green0001" x="468" y="180" width="180" height="157"/>
+	<SubTexture name="green0002" x="648" y="180" width="180" height="157"/>
+	<SubTexture name="green0003" x="648" y="180" width="180" height="157"/>
+	<SubTexture name="green0004" x="828" y="180" width="180" height="157"/>
+	<SubTexture name="green0005" x="828" y="180" width="180" height="157"/>
+	<SubTexture name="yellow0000" x="0" y="360" width="158" height="113"/>
+	<SubTexture name="yellow0001" x="0" y="360" width="158" height="113"/>
+	<SubTexture name="yellow0002" x="158" y="360" width="158" height="113"/>
+	<SubTexture name="yellow0003" x="158" y="360" width="158" height="113"/>
+	<SubTexture name="yellow0004" x="316" y="360" width="158" height="113"/>
+	<SubTexture name="yellow0005" x="316" y="360" width="158" height="113"/>
+</TextureAtlas>

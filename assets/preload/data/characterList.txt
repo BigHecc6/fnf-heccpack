@@ -52,3 +52,4 @@ bfmii
 bfmii-dead
 gf-mii
 bf-salt
+obama

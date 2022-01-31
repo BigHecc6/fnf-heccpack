@@ -33,6 +33,8 @@ class CreditsState extends MusicBeatState
 	var intendedColor:Int;
 	var colorTween:FlxTween;
 
+	var keys:KeyTip;
+
 	override function create()
 	{
 		#if desktop
@@ -145,6 +147,11 @@ class CreditsState extends MusicBeatState
 		bg.color = getCurrentBGColor();
 		intendedColor = bg.color;
 		changeSelection();
+
+		keys = new KeyTip([["Back", "esc"], ["Scroll", "updown"], ["View Twitter", "enter"]], false);
+		add(keys);
+		keys.show(true);
+
 		super.create();
 	}
 

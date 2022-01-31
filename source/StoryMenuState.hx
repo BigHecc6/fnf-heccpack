@@ -61,11 +61,17 @@ class StoryMenuState extends MusicBeatState
 		Paths.destroyLoadedImages();
 		#end
 
+		modCats = CoolUtil.coolTextFile(Paths.getPreloadPath('moddies/mods.txt'));
+		if (modNum >= modCats.length - 1) { 
+			trace(modNum);
+			modNum = modCats.length - 2; 
+			trace(modNum);
+		}
+
 		PlayState.isStoryMode = true;
 		WeekData.reloadWeekFiles(true);
 
-		modCats = CoolUtil.coolTextFile(Paths.getPreloadPath('moddies/mods.txt'));
-		
+
 		persistentUpdate = persistentDraw = true;
 
 		scoreText = new FlxText(10, 10, 0, "SCORE: 49324858", 36);
@@ -474,6 +480,7 @@ class StoryMenuState extends MusicBeatState
 			reloadWeeks();
 			updateText();
 			changeWeek(0);
+			changeDifficulty();
 			
 		}
 

@@ -18,7 +18,16 @@ class Achievements {
 		["Lady Killer",					"Beat Week 4 on Hard with no Misses.",				'week4_nomiss',			false],
 		["Missless Christmas",			"Beat Week 5 on Hard with no Misses.",				'week5_nomiss',			false],
 		["Highscore!!",					"Beat Week 6 on Hard with no Misses.",				'week6_nomiss',			false],
-		["You'll Pay For That...",		"Beat Week 7 on Hard with no Misses.",				'week7_nomiss',			 true],
+		["You'll Pay For That...",		"Beat Week 7 on Hard with no Misses.",				'week7_nomiss',			false],
+		["Time To Go Ballistic!",		"Beat the Whitty Mod on Hard with no Misses.",		'weekwit_nomiss',		false],
+		["I Love Corn!", 				"Beat Both Zardy Weeks with no Misses.",			'weekz_nomiss',			false],
+		["Hot Dog!",					"Beat Wednesday Infidelity with no Misses.",		'weeksuc_nomiss',		false],
+		["Nice throw!",					"Beat Wiik 1 on Hard with no Misses. What a pro!",	'wiik1_nomiss',			false],
+		["Strike!",						"Beat Wiik 2 on Hard with no Misses. How in the...",'wiik2_nomiss',			false],
+		["Excellent!!",					"Beat Wiik 3 on Hard with no Misses. Are you hacking?",'wiik3_nomiss',			false],
+		["CONNECTION TERMINATED",		"Beat Week 1 of the Hex Mod on Hard with no Misses.",'hex1_nomiss',			false],
+		["Upgrade to Windows 10",		"Beat Week 2 of the Hex Mod on Hard with no Misses.",'hex2_nomiss',			false],
+		["Completionist",				"Beat Every Song of a Single Mod.",					'mod_complete',			false],
 		["What a Funkin' Disaster!",	"Complete a Song with a rating lower than 20%.",	'ur_bad',				false],
 		["Perfectionist",				"Complete a Song with a rating of 100%.",			'ur_good',				false],
 		["Roadkill Enthusiast",			"Watch the Henchmen die over 100 times.",			'roadkill_enthusiast',	false],
@@ -26,7 +35,8 @@ class Achievements {
 		["Hyperactive",					"Finish a Song without going Idle.",				'hype',					false],
 		["Just the Two of Us",			"Finish a Song pressing only two keys.",			'two_keys',				false],
 		["Toaster Gamer",				"Have you tried to run the game on a toaster?",		'toastie',				false],
-		["Debugger",					"Beat the \"Test\" Stage from the Chart Editor.",	'debugger',				 true]
+		["Debugger",					"Beat the \"Test\" Stage from the Chart Editor.",	'debugger',				 true],
+		["Bro You Have No Life",		"Beat Every. Single. Song. In the Game.",			'ohgod',				true]
 	];
 	public static var achievementsMap:Map<String, Bool> = new Map<String, Bool>();
 

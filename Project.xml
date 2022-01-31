@@ -119,8 +119,8 @@
 	<assets path="assets/weeksuc"         library="weeksuc"         exclude="*.mp3" unless="web"/>
 	<assets path="assets/wiik"         library="wiik"         exclude="*.ogg" if="web"/>
 	<assets path="assets/wiik"         library="wiik"         exclude="*.mp3" unless="web"/>
-	<assets path="assets/exweek"         library="wiik"         exclude="*.ogg" if="web"/>
-	<assets path="assets/exweek"         library="wiik"         exclude="*.mp3" unless="web"/>
+	<assets path="assets/exweek"         library="exweek"         exclude="*.ogg" if="web"/>
+	<assets path="assets/exweek"         library="exweek"         exclude="*.mp3" unless="web"/>
 	<assets path="assets/weekhex"         library="weekhex"         exclude="*.ogg" if="web"/>
 	<assets path="assets/weekhex"         library="weekhex"         exclude="*.mp3" unless="web"/>
 

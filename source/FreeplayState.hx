@@ -60,11 +60,9 @@ class FreeplayState extends MusicBeatState
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
 	private var icon:HealthIcon;
-	private var keyIcons:FlxTypedGroup<FlxSprite>;
 	private var freeArrow:FlxSprite; 
 	private var checkerboard:FlxSprite;
 	private var curPlaying:Bool = false;
-	private var keyArray:Array<Dynamic>;
 
 	private var iconArray:Array<HealthIcon> = [];
 	private var icons:FlxTypedGroup<HealthIcon>;
@@ -169,7 +167,6 @@ class FreeplayState extends MusicBeatState
 		add(grpSongs);
 		icons = new FlxTypedGroup<HealthIcon>();
 		add(icons);
-		keyIcons = new FlxTypedGroup<FlxSprite>();
 
 		add(scoreBG);
 		charName.alpha = 0;
@@ -310,7 +307,7 @@ class FreeplayState extends MusicBeatState
 			}
 
 			if (random && !charTime) {
-				var pp:Int = Random.int(1,songs.length-1);
+				var pp:Int = Random.int(0,songs.length-1);
 				changeSelection(pp, true, true);
 				haxe.Log.trace(pp);
 			}

@@ -1,0 +1,17 @@
+{
+	"directory": "exweek",
+	"defaultZoom": 0.2,
+	"isPixelStage": false,
+
+	"boyfriend": [3150, 1900],
+	"girlfriend": [2450, 1430],
+	"opponent": [350, 805],
+	"background": [
+		["bg", "obama/bluebg", -3300, -1800, 0.6, 0.6, 2, true],
+		["bg2", "obama/redfg", -3300, -1800, 0.7, 0.7, 2, true],
+		["rocks2", "obama/rocks2", -3300, -1800, 0.8, 0.8, 2, true],
+		["bg2", "obama/rocks1", -3300, -1800, 0.95, 0.95, 2, true]
+	],
+	"foreground": [
+	]
+}

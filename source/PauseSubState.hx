@@ -22,12 +22,13 @@ class PauseSubState extends MusicBeatSubstate
 	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Exit to menu'];
 	var difficultyChoices = [];
 	var curSelected:Int = 0;
-
+	var keys:KeyTip;
 	var pauseMusic:FlxSound;
 	var practiceText:FlxText;
 	//var botplayText:FlxText;
 
 	public static var transCamera:FlxCamera;
+	var keyCam:FlxCamera;
 
 	public function new(x:Float, y:Float)
 	{
@@ -114,8 +115,15 @@ class PauseSubState extends MusicBeatSubstate
 		}
 
 		changeSelection();
-
+		keyCam = new FlxCamera();
+		keyCam.bgColor.alpha = 0;
+		FlxG.cameras.add(keyCam);
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
+
+		keys = new KeyTip([["Scroll", "updown"], ["Select", "enter"]], false, keyCam);
+		add(keys);
+		keys.show(true);
+
 	}
 
 	override function update(elapsed:Float)

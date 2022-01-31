@@ -2,7 +2,8 @@
     "id": "ext",
     "name": "Extra Songs",
     "weeks": [
-        "nword"
+        "nword",
+        "obama"
     ],
     "modBefore": ""
 }
