@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="peter-griffin.png">
+	<!-- Created with Adobe Animate version 21.0.2.37893 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="peter_down0000" x="0" y="0" width="547" height="651"/>
+	<SubTexture name="peter_idle0000" x="564" y="0" width="514" height="747"/>
+	<SubTexture name="peter_left0000" x="1095" y="0" width="730" height="754"/>
+	<SubTexture name="peter_right0000" x="0" y="771" width="782" height="718"/>
+	<SubTexture name="peter_up0000" x="799" y="771" width="609" height="868"/>
+</TextureAtlas>

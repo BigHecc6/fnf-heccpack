@@ -48,6 +48,7 @@ class ClientPrefs {
 	public static var badWindow:Int = 135;
 	public static var safeFrames:Float = 10;
 	public static var lastVersion:String = "1.0";
+	public static var gay:Bool = true;
 
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
@@ -114,6 +115,7 @@ class ClientPrefs {
 		FlxG.save.data.gameplaySettings = gameplaySettings;
 		FlxG.save.data.controllerMode = controllerMode;
 		FlxG.save.data.lastVersion = lastVersion;
+		FlxG.save.data.gay = gay;
 	
 		FlxG.save.flush();
 
@@ -220,6 +222,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.lastVersion != null) {
 			lastVersion = '1.0';
+		}
+		if(FlxG.save.data.gay != null) {
+			gay = true;
 		}
 		if(FlxG.save.data.gameplaySettings != null)
 		{

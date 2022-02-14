@@ -126,6 +126,9 @@ class Note extends FlxSprite
 					reloadNote('THORN');
 					missHealth = 0.2;
 					hitCausesMiss = true;
+				case 'Camo Note':
+					ignoreNote = mustPress;
+					reloadNote('CAMO');
 
 			}
 			noteType = value;
@@ -302,6 +305,11 @@ class Note extends FlxSprite
 		if(inEditor) {
 			setGraphicSize(ChartingState.GRID_SIZE, ChartingState.GRID_SIZE);
 			updateHitbox();
+		}
+		if (prefix == 'CAMO') {
+			alpha = 0.5;
+		} else {
+			alpha = 1.0;
 		}
 	}
 

@@ -135,6 +135,12 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.maxValue = 10;
 		option.changeValue = 0.1;
 		addOption(option);
+		var option:Option = new Option('Gay Mode',
+		'CURRENTLY DOES NOTHING',
+		'gay',
+		'bool',
+		true);
+		addOption(option);
 
 		super();
 	}

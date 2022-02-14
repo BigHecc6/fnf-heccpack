@@ -1,0 +1,89 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				86,
+				10
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "peter_left"
+		},
+		{
+			"offsets": [
+				20,
+				-70
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "peter_down"
+		},
+		{
+			"offsets": [
+				114,
+				130
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "peter_up"
+		},
+		{
+			"offsets": [
+				100,
+				-3
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "peter_right"
+		},
+		{
+			"offsets": [
+				-2,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "peter_idle"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle-l",
+			"loop": false,
+			"name": "peter_idle"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/peter-griffin",
+	"position": [
+		-150,
+		100
+	],
+	"healthicon": "peter",
+	"flip_x": false,
+	"healthbar_colors": [
+		254,
+		184,
+		162
+	],
+	"camera_position": [
+		110,
+		150
+	],
+	"sing_duration": 6.1,
+	"scale": 0.8
+}
